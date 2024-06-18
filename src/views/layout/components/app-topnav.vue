@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import router from '@/router'
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { onBeforeRouteUpdate } from 'vue-router'
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia'
@@ -51,9 +51,14 @@ const goUrl = (to: string) => {
 }
 
 onMounted(() => {
+  window.addEventListener('resize', updatedWidth)
+
   const path = window.location.pathname
   goUrl(path)
   toggleBox()
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', updatedWidth)
 })
 
 onBeforeRouteUpdate(to => {
@@ -99,18 +104,42 @@ const toggleBox = async () => {
     console.log('navigationStore1', pageItemWidth1.value)
   }
 }
+
+const width = ref(window.innerWidth)
+window.onresize = () => {
+  // 监听窗口大小变化
+  width.value = window.innerWidth
+}
+const updatedWidth = function () {
+  width.value = window.innerWidth
+}
+
+const selectType = ref(false)
+const blockSelect = () => {
+  selectType.value = !selectType.value
+  document.addEventListener('wheel', event => {
+    event.preventDefault()
+  })
+  // // 禁止滚动
+  // if (document.body.style.overflow != 'hidden') {
+  //   document.body.style.overflow = 'hidden'
+  // } else {
+  //   document.body.style.overflow = 'auto'
+  // }
+}
 </script>
 
 <template>
   <nav class="app-topnav">
     <div class="container">
       <router-link class="pageItem" @click="clickPage(0)" to="/">
-        <img src="@/assets/svgs/Logo.svg" alt="" />
+        <img v-if="width > 1140" src="@/assets/svgs/Logo.svg" alt="" />
+        <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
         <!-- <div class="logo">Geopolobserver</div> -->
         <!-- <div class="logo">GEOPOLOBSERVER</div> -->
       </router-link>
 
-      <div class="right">
+      <div class="right" v-if="width > 1140">
         <div class="link_list" id="link_list435">
           <div
             v-for="(item, index) in pageList"
@@ -159,11 +188,103 @@ const toggleBox = async () => {
 
         <div class="top_button">SUBSCRIBE</div>
       </div>
+
+      <img
+        class="list_caption_image"
+        src="@/assets/svgs/list_caption.svg"
+        alt=""
+        v-if="width < 1140"
+        @click="blockSelect"
+      />
+      <el-drawer
+        v-model="selectType"
+        :lock-scroll="false"
+        z-index="10000"
+        size="100%"
+      >
+        <div
+          class="drawerpageItem"
+          v-for="(item, index) in pageList"
+          :key="index"
+        >
+          <router-link
+            v-if="index !== 1"
+            @click="selectType = false"
+            class="drawerpageTitle"
+            :to="item.to"
+          >
+            {{ item.name }}
+          </router-link>
+          <el-collapse v-if="index == 1" class="collapse">
+            <el-collapse-item title="WHAT WE DO">
+              <router-link
+                class="collapse_item"
+                :to="item.to"
+                @click="selectType = false"
+              >
+                What We Do
+              </router-link>
+              <div v-for="(item, index) in bbboxitem" :key="index">
+                <router-link
+                  class="collapse_item"
+                  :to="item.to"
+                  @click="selectType = false"
+                >
+                  {{ item.name }}
+                </router-link>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+        </div>
+      </el-drawer>
     </div>
   </nav>
 </template>
 
 <style scoped lang="less">
+.collapse_item {
+  margin-left: 15px;
+  color: rgba(27, 27, 27, 0.725);
+  font-family: Marsek;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  display: block;
+  width: 100%;
+}
+.collapse {
+  width: 100%;
+  border: none;
+  --el-collapse-border-color: none;
+  --el-collapse-header-font-size: 20px;
+  --el-collapse-header-text-color: #1b1b1b;
+  :deep(.el-collapse-item__header) {
+    color: #1b1b1b !important;
+    font-family: Marsek;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+.drawerpageItem {
+  cursor: pointer;
+  // background: #000;
+  display: flex;
+  flex-direction: column;
+}
+.drawerpageTitle {
+  width: 100%;
+  color: #1b1b1b;
+  font-family: Marsek;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 20px 0;
+}
+
 .logo {
   color: #1b1b1b;
   font-family: Marsek;
@@ -171,6 +292,10 @@ const toggleBox = async () => {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.list_caption_image {
+  width: 40px;
+  height: 40px;
 }
 .bbbox {
   position: absolute;
@@ -230,6 +355,7 @@ const toggleBox = async () => {
 
     .pageItem {
       height: 175px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -286,5 +412,33 @@ const toggleBox = async () => {
   display: flex;
   align-items: center;
   gap: 84px;
+  margin-left: 20px;
+}
+
+@media (max-width: 1430px) {
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 40px !important;
+  }
+}
+@media (max-width: 1230px) {
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 20px !important;
+  }
+}
+@media (max-width: 840px) {
+  .app-topnav {
+    height: 106px;
+    padding: 0 0px;
+    .container {
+      height: 103px;
+      padding: 0 20px;
+    }
+  }
 }
 </style>

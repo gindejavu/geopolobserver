@@ -8,7 +8,7 @@
     </div>
     <div class="container">
       <div class="OurValuesArticle">
-        <div class="OurValuesArticle_text1" style="margin-bottom: 45px">
+        <div class="OurValuesArticle_text1">
           At EAIR, our mission is to provide the tools and understanding needed
           in a world where politics drives disruption. We put
           <span class="text_bold">politics first</span> for our clients, and we
@@ -53,7 +53,7 @@
         </div>
         <div class="OurValuesArticle_title">OUR VALUES</div>
 
-        <div style="display: flex; flex-direction: column; gap: 45px">
+        <div class="OurValuesArticle_text_biggap">
           <div class="OurValuesArticle_text_big">Agenda-free point of view</div>
           <div class="OurValuesArticle_text">
             We provide actionable analysis that is free of bias.
@@ -137,6 +137,7 @@
       padding: 60px 20px 90px 20px;
     }
     .OurValuesArticle_title {
+      margin-top: 45px;
       text-align: center;
       color: #6832c5;
       font-family: 'Aldrich', Sans-serif;
@@ -160,6 +161,55 @@
 
   .text_bold {
     font-weight: 600;
+  }
+}
+.OurValuesArticle_text_biggap {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+@media (max-width: 840px) {
+  .home_view {
+    .child_top {
+      .bg {
+        height: 420px;
+        .child_top_title {
+          font-size: 48px;
+          margin-left: 20%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .container {
+      font-size: 18px;
+      font-weight: 400;
+
+      .OurValuesArticle {
+        padding: 40px 15px 90px 15px;
+      }
+      .OurValuesArticle_title {
+        margin-top: 35px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+      .OurValuesArticle_text2 {
+        gap: 15px;
+      }
+      .OurValuesArticle_text_big {
+        font-size: 22px;
+        line-height: 31px;
+      }
+    }
+
+    .text_bold {
+      font-weight: 600;
+    }
+  }
+  .OurValuesArticle_text_biggap {
+  
+    gap: 15px;
   }
 }
 </style>

@@ -8,7 +8,7 @@
     </div>
     <div class="container">
       <div class="OurStoryArticle">
-        <div style="display: flex; flex-direction: column; gap: 30px">
+        <div class="OurStoryArticlegap">
           <div class="OurStoryArticle_text_big">A Contrarian Voice</div>
           <div class="OurStoryArticle_text">
             Founded in 2015 by a team of seasoned political scientists and
@@ -71,6 +71,11 @@
   </div>
 </template>
 <style scoped lang="less">
+.OurStoryArticlegap {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 .home_view {
   background: #f1f7f4;
   .child_top {
@@ -106,7 +111,7 @@
 
       .child_top_title {
         position: absolute;
-        z-index: 2;
+        z-index: 1;
         font-size: 59px;
         margin-left: 240px;
         margin-bottom: 60px;
@@ -132,6 +137,37 @@
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
+    }
+  }
+}
+@media (max-width: 840px) {
+  .OurStoryArticlegap {
+    gap: 15px;
+  }
+  .home_view {
+    .child_top {
+      .bg {
+        height: 420px;
+        .child_top_title {
+          font-size: 48px;
+          margin-left: 24%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .container {
+      font-size: 18px;
+      line-height: 151%;
+
+      .OurStoryArticle {
+        padding: 40px 15px 90px 15px;
+      }
+
+      .OurStoryArticle_text_big {
+        margin-top: 20px;
+
+        font-size: 30px;
+      }
     }
   }
 }

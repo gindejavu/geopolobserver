@@ -9,7 +9,7 @@
     <div class="container">
       <div class="WhatWeDoyArticle">
         <div class="WhatWeDoy_title">politics first</div>
-        <div style="display: flex; flex-direction: column; gap: 40px">
+        <div class="WhatWeDoyArticle_text_biggap">
           <div class="WhatWeDoyArticle_text_big">Political risk advisory</div>
           <div class="WhatWeDoyArticle_text">
             <p>
@@ -151,6 +151,49 @@
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
+    }
+  }
+}
+.WhatWeDoyArticle_text_biggap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media (max-width: 840px) {
+  .WhatWeDoyArticle_text_biggap {
+    gap: 20px;
+  }
+  .WhatWeDoy_title {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .home_view {
+    .child_top {
+      .bg {
+        height: 420px;
+        .child_top_title {
+          font-size: 48px;
+          margin-left: 20%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .container {
+      font-size: 18px;
+
+      .WhatWeDoyArticle {
+        padding: 40px 15px 90px 15px;
+      }
+      .WhatWeDoyArticle_text {
+        gap: 10px;
+        line-height: 155%;
+      }
+      .WhatWeDoyArticle_text_big {
+        font-size: 30px;
+        font-weight: 600;
+      }
     }
   }
 }

@@ -10,14 +10,7 @@
       <div class="WhatWeDoyArticle">
         <div class="WhatWeDoy_title">politics first</div>
         <div>
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              gap: 35px;
-              margin-bottom: 80px;
-            "
-          >
+          <div class="WhatWeDoy_titlegap">
             <div class="WhatWeDoyArticle_text_big">Geopolitical Advisory</div>
             <div class="WhatWeDoyArticle_text">
               <p>
@@ -38,14 +31,7 @@
           <div style="display: flex; justify-content: center">
             <img src="@/assets/images/communc.png" alt="" />
           </div>
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              gap: 35px;
-              margin-top: 60px;
-            "
-          >
+          <div class="WhatWeDoyArticle_text_biggpa">
             <div class="WhatWeDoyArticle_text_big">
               Scenario Planning and Forecasting
             </div>
@@ -75,14 +61,7 @@
               dynamics.
             </p>
           </div>
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              gap: 35px;
-              margin-top: 80px;
-            "
-          >
+          <div class="WhatWeDoyArticle_text_biggpa">
             <div class="WhatWeDoyArticle_text_big">Geopolitical Monitoring</div>
             <p>
               EAIR continuously monitors and analyzes geopolitical developments,
@@ -107,6 +86,18 @@
   </div>
 </template>
 <style scoped lang="less">
+.WhatWeDoyArticle_text_biggpa {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 60px;
+}
+.WhatWeDoy_titlegap {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-bottom: 80px;
+}
 .text_bold {
   font-weight: 600;
 }
@@ -187,6 +178,59 @@
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  .WhatWeDoyArticle_text_biggpa {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+  }
+
+  .WhatWeDoy_titlegap {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .WhatWeDoy_title {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .WhatWeDoyArticle_icon {
+    gap: 15px;
+    margin-top: 25px;
+    font-size: 16px;
+  }
+  .home_view {
+    .child_top {
+      .bg {
+        height: 420px;
+
+        .child_top_title {
+          font-size: 40px;
+          margin-left: 1%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .container {
+      font-size: 18px;
+
+      .WhatWeDoyArticle {
+        padding: 40px 15px 90px 15px;
+        .WhatWeDoyArticle_text {
+          gap: 20px;
+        }
+      }
+
+      .WhatWeDoyArticle_text_big {
+        font-size: 30px;
+        font-weight: 600;
+      }
     }
   }
 }

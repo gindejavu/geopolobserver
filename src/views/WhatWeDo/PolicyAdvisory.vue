@@ -29,9 +29,9 @@ const WhatWeDoyArticle_icon = ref([
     </div>
     <div class="container">
       <div class="WhatWeDoyArticle">
-        <div style="display: flex; flex-direction: column; gap: 50px">
+        <div class="WhatWeDoy_titlegap">
           <div class="WhatWeDoy_title">Management consulting</div>
-          <div style="display: flex; flex-direction: column; gap: 40px">
+          <div class="WhatWeDoyArticle_text_biggap">
             <div class="WhatWeDoyArticle_text_big">Geopolitical Advisory</div>
             <div class="WhatWeDoyArticle_text">
               Geopolitics has never been more critical to the performance of
@@ -46,7 +46,7 @@ const WhatWeDoyArticle_icon = ref([
               in-house teams cannot match.
             </div>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 40px">
+          <div class="WhatWeDoyArticle_text_biggap">
             <div class="WhatWeDoyArticle_text_big">Key Advisory Services</div>
             <div class="WhatWeDoyArticle_text">
               <p>
@@ -94,7 +94,16 @@ const WhatWeDoyArticle_icon = ref([
   font-weight: 700;
   line-height: 31px;
 }
-
+.WhatWeDoy_titlegap {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.WhatWeDoyArticle_text_biggap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 .home_view {
   background: #f1f7f4;
   .child_top {
@@ -169,6 +178,57 @@ const WhatWeDoyArticle_icon = ref([
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
+    }
+  }
+}
+@media (max-width: 840px) {
+  .WhatWeDoy_titlegap {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .WhatWeDoyArticle_text_biggap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .WhatWeDoy_title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .home_view {
+    .child_top {
+      .bg {
+        height: 420px;
+
+        .child_top_title {
+          font-size: 48px;
+          margin-left: 15%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .container {
+      font-size: 18px;
+
+      .WhatWeDoyArticle {
+        padding: 40px 15px 90px 15px;
+      }
+      .WhatWeDoyArticle_text {
+        gap: 10px;
+        line-height: 155%;
+      }
+
+      .WhatWeDoyArticle_text_big {
+        color: #000;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 31px;
+      }
     }
   }
 }

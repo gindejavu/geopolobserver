@@ -37,6 +37,7 @@ onMounted(() => {
   goUrl(path)
 })
 
+// 监听路由变化
 onBeforeRouteUpdate(to => {
   goUrl(to.path)
 })
@@ -68,23 +69,37 @@ const scrollToTop = () => {
 const isVisible = ref(false)
 
 onMounted(() => {
+  window.addEventListener('resize', updatedWidth)
   window.addEventListener('scroll', scrollHandler)
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', updatedWidth)
+
   window.removeEventListener('scroll', scrollHandler)
 })
+
+const width = ref(window.innerWidth)
+window.onresize = () => {
+  // 监听窗口大小变化
+  width.value = window.innerWidth
+}
+const updatedWidth = function () {
+  width.value = window.innerWidth
+}
 </script>
 
 <template>
   <nav class="app-topnav">
     <div class="container">
       <router-link class="pageItem" @click="clickPage(0)" to="/">
-        <img src="@/assets/svgs/Logo.svg" alt="" />
+        <img v-if="width > 1140" src="@/assets/svgs/Logo.svg" alt="" />
+        <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
+
         <!-- <div class="logo">Geopolobserver</div> -->
       </router-link>
 
-      <div class="right">
+      <div class="right" v-if="width > 1140">
         <div class="link_list" id="link_list435">
           <div
             v-for="(item, index) in pageList"
@@ -185,6 +200,7 @@ onBeforeUnmount(() => {
       display: flex;
       align-items: center;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .btnling {
@@ -208,6 +224,64 @@ onBeforeUnmount(() => {
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+    }
+  }
+}
+
+@media (max-width: 1430px) {
+  .container {
+    gap: 160px !important;
+  }
+  .link_list {
+    gap: 30px !important;
+  }
+}
+@media (max-width: 1230px) {
+  .container {
+    gap: 60px !important;
+  }
+  .link_list {
+    gap: 30px !important;
+  }
+}
+@media (max-width: 840px) {
+  .app-topnav {
+    height: 106px;
+    padding: 0 0px;
+    .container {
+      height: 103px;
+      padding: 0 20px;
+    }
+  }
+  .scroll-to-top-button {
+    position: absolute;
+    bottom: 80px;
+    right: 30px;
+    width: 56px;
+    aspect-ratio: 1.1625; /* 宽高比例缩放 */
+    border-radius: 0px;
+    // 旋转
+
+    object-fit: cover; /* 保持图片原有比例, 会有剪切*/
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+
+    background: #6832c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1))
+      rotate(30deg); /* 对图片进行移动和缩放 */
+    transition: 0.2s linear; /* 过渡效果 */
+    &:hover {
+      --_t: 1.1;
+    }
+    img {
+      width: 20px;
+      transform: rotate(-30deg);
+      height: 20px;
     }
   }
 }

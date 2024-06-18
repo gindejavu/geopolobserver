@@ -30,7 +30,7 @@ const WhatWeDoyArticle_icon = ref([
     <div class="container">
       <div class="WhatWeDoyArticle">
         <div class="WhatWeDoy_title">politics first</div>
-        <div style="display: flex; flex-direction: column; gap: 40px">
+        <div class="WhatWeDoyArticle_text_biggap">
           <div class="WhatWeDoyArticle_text_big">
             Figuring out how politics affects your business is what we do— all
             day, every day.
@@ -70,6 +70,11 @@ const WhatWeDoyArticle_icon = ref([
   </div>
 </template>
 <style scoped lang="less">
+.WhatWeDoyArticle_text_biggap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 .WhatWeDoy_title {
   font-size: 110px;
   text-align: center;
@@ -147,6 +152,49 @@ const WhatWeDoyArticle_icon = ref([
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  .WhatWeDoyArticle_text_biggap {
+
+    gap: 20px;
+  }
+  .WhatWeDoy_title {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .WhatWeDoyArticle_icon {
+    gap: 15px;
+    margin-top: 25px;
+    font-size: 16px;
+  }
+  .home_view {
+    .child_top {
+      .bg {
+        height: 420px;
+
+        .child_top_title {
+          font-size: 48px;
+          margin-left: 20%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .container {
+      font-size: 18px;
+
+      .WhatWeDoyArticle {
+        padding: 40px 15px 90px 15px;
+      }
+
+      .WhatWeDoyArticle_text_big {
+        font-size: 30px;
+        font-weight: 600;
+      }
     }
   }
 }

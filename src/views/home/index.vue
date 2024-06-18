@@ -132,13 +132,15 @@ const inputButtonClick = () => {
       align-items: center;
       flex-wrap: wrap;
       padding: 99px 0;
+
       .top_Tariffs_left {
         display: flex;
         flex-direction: column;
         justify-content: center;
         max-width: 836px;
         flex-shrink: 0;
-        gap: 21px;
+        margin: 20px 0;
+        gap: 24px;
         .top_Tariffs_left_title {
           color: #141414;
           font-family: Poppins;
@@ -220,7 +222,12 @@ const inputButtonClick = () => {
           display: flex;
           justify-content: space-evenly;
           align-items: center;
+          // flex-wrap: wrap;
           gap: 51px;
+          .Partners_top_content_item {
+            flex-shrink: 0;
+            width: 220px;
+          }
         }
         border-bottom: 2px solid #fff;
       }
@@ -453,6 +460,321 @@ const inputButtonClick = () => {
           &:hover {
             --_t: 1.02;
             box-shadow: #6832c57a 0px 1px 16px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1560px) {
+  .home_view {
+    .container {
+      .top_Tariffs {
+        flex-direction: column-reverse !important;
+        .top_Tariffs_left_button_f {
+          justify-content: center !important;
+        }
+        .top_Tariffs_left_title {
+          text-align: center;
+        }
+      }
+      .Top_Risks {
+        margin-bottom: 100px;
+        flex-direction: column !important;
+      }
+      .Partners_top_content {
+        flex-wrap: wrap !important;
+      }
+    }
+  }
+}
+@media (max-width: 1140px) {
+  .home_view {
+    .container {
+      .top_Tariffs {
+        padding: 60px 50px;
+      }
+    }
+  }
+}
+@media (max-width: 940px) {
+  .home_view {
+    .container {
+      .Top_Risks {
+        .Top_Risks_left {
+          position: relative;
+
+          .hexagon {
+            width: 600px;
+            height: 600px;
+            background: url('@/assets/images/Top_Risks_left_star_big.png')
+              no-repeat;
+            background-size: contain;
+          }
+          .s_hexagon_img {
+            position: absolute;
+            top: 0;
+            width: 201px;
+            height: 201px;
+            background: url('@/assets/images/Top_Risks_left4.png') no-repeat;
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .s_hexagon_img:nth-child(2) {
+            left: -88px;
+            top: 154px;
+            background: url('@/assets/images/Top_Risks_left3.png') no-repeat;
+            background-size: cover;
+          }
+          .s_hexagon_img:nth-child(3) {
+            left: 0px;
+            top: 308px;
+            background: url('@/assets/images/Top_Risks_left2.png') no-repeat;
+            background-size: cover;
+          }
+
+          .img1 {
+            width: 660px;
+            // position: absolute;
+
+            // z-index: 2;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 840px) {
+  .home_view {
+    .container {
+      .top_Tariffs {
+        padding: 60px 50px;
+        .top_Tariffs_right {
+          width: 330px;
+          height: 330px;
+          flex-shrink: 0;
+          border-radius: 100px;
+        }
+        .top_Tariffs_left {
+          max-width: 100% !important;
+          width: 100%;
+          flex-shrink: 0;
+          margin-top: 30px;
+          .top_Tariffs_left_title {
+            text-align: center;
+            font-size: 20px;
+            line-height: 149.303%; /* 29.861px */
+            & > span {
+              font-size: 20px;
+              font-weight: 700;
+              line-height: 149.303%;
+            }
+          }
+          .top_Tariffs_left_button_f {
+            display: flex;
+            justify-content: start;
+            gap: 27px;
+            .top_Tariffs_left_button {
+              width: 139.197px;
+              height: 44.791px;
+              flex-shrink: 0;
+              border-radius: 54px;
+
+              font-size: 12px;
+
+              font-weight: 600;
+              line-height: 95.255%; /* 11.431px */
+              &:hover {
+                --_t: 1.02;
+                box-shadow: #6832c57a 0px 1px 16px 0px;
+              }
+              &:nth-child(2) {
+                background: #141414;
+              }
+            }
+          }
+        }
+      }
+      .Our_Beloved_Partners {
+        .Our_Beloved_Partners_top {
+          padding: 50px 20px 42px 20px;
+          .Partners_top_title {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 149.303%; /* 29.861px */
+            text-transform: capitalize;
+          }
+          .Partners_top_content {
+            gap: 25px;
+            row-gap: 0;
+            .Partners_top_content_item {
+              flex-shrink: 0;
+              width: 98px;
+            }
+          }
+          border-bottom: 2px solid #fff;
+        }
+        .Our_Beloved_Partners_bottom {
+          padding: 42px 20px 82px 20px;
+
+          .Partners_bottom_title {
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 149.303%; /* 29.861px */
+
+            margin-bottom: 30px;
+          }
+          .Partners_bottom_search {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            .Partners_bottom_search_text {
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 149.303%; /* 14.93px */
+            }
+            .Partners_bottom_search_input {
+              width: 100%;
+              box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+              .el-input {
+                height: 45px;
+                border-radius: 12px !important;
+
+                :deep(.el-input__wrapper) {
+                  border-radius: 12px !important;
+                }
+                :deep(.el-input__inner) {
+                  font-size: 16px;
+                }
+                :deep(.el-input-group__append) {
+                  padding: 0;
+                  border-top-right-radius: 12px;
+                  border-bottom-right-radius: 12px;
+                }
+                .input_button {
+                  margin-left: 14px;
+
+                  width: 112px;
+                  height: 45px;
+
+                  border-radius: 10px;
+
+                  font-size: 15px;
+                }
+              }
+            }
+            .el-checkbox {
+              // color: #fff;
+              --el-checkbox-text-color: #fff;
+              --el-checkbox-checked-text-color: #fff; // 选中时的文字颜色
+              align-items: start;
+
+              :deep(.el-checkbox__input) {
+                margin-top: 4px;
+                width: 14px;
+                height: 14px;
+                flex-shrink: 0;
+                border-radius: 4px;
+                background: #fff;
+              }
+              :deep(.is-checked) {
+                --el-checkbox-checked-bg-color: #6832c5;
+                --el-checkbox-checked-input-border-color: #6832c5;
+              }
+              :deep(.el-checkbox__inner) {
+                width: 14px;
+                height: 14px;
+                flex-shrink: 0;
+                border-radius: 4px;
+                display: flex;
+
+                &::after {
+                  height: 8px;
+                  left: 4px;
+                  width: 4px;
+                }
+              }
+              :deep(.el-checkbox__label) {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+      .Top_Risks {
+        // padding: 133px 82px 180px 40px;
+        height: 604px !important;
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        gap: 75px;
+        flex-direction: column;
+
+        .Top_Risks_left {
+          position: relative;
+
+          .hexagon {
+            width: 290px !important;
+            height: 290px !important;
+            background: url('@/assets/images/Top_Risks_left_star_big.png')
+              no-repeat;
+            background-size: contain;
+          }
+          .s_hexagon_img {
+            position: absolute;
+            top: 0;
+            width: 120px !important;
+            height: 120px !important;
+            background: url('@/assets/images/Top_Risks_left4.png') no-repeat;
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .s_hexagon_img:nth-child(2) {
+            left: -52px !important;
+            top: 92px !important;
+            background: url('@/assets/images/Top_Risks_left3.png') no-repeat;
+            background-size: cover;
+          }
+          .s_hexagon_img:nth-child(3) {
+            left: 0px;
+            top: 184px !important;
+          }
+
+          .img1 {
+            width: 660px;
+            // position: absolute;
+
+            // z-index: 2;
+          }
+        }
+
+        .Top_Risks_right {
+          .Top_Risks_right_title {
+            font-size: 25px;
+          }
+          .Top_Risks_right_text {
+            font-size: 20px;
+            margin-top: 21px;
+            margin-bottom: 30px;
+          }
+          .op_Risks_right_botton {
+            gap: 16px;
+            width: 222px;
+            height: 44px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            font-size: 15px;
           }
         }
       }
