@@ -1,6 +1,7 @@
 <script setup lang="ts" name="HomeView">
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import arrow from '@/assets/svgs/Arrow.svg'
+import arrow1 from '@/assets/svgs/Arrow1.svg'
 import { ElMessage } from 'element-plus'
 const checked = ref(false)
 const input = ref('')
@@ -24,6 +25,22 @@ const inputButtonClick = () => {
   if (input.value.trim() === '') {
     ElMessage.error('Please enter your email')
   }
+}
+onMounted(() => {
+  window.addEventListener('resize', updatedWidth)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updatedWidth)
+})
+
+const width = ref(window.innerWidth)
+window.onresize = () => {
+  // 监听窗口大小变化
+  width.value = window.innerWidth
+}
+const updatedWidth = function () {
+  width.value = window.innerWidth
 }
 </script>
 <template>
@@ -110,7 +127,7 @@ const inputButtonClick = () => {
           <div class="Top_Risks_right_title">TOP RISKS 2024</div>
           <div class="Top_Risks_right_text">LATEST FROM EAIR GROUP:</div>
           <div class="op_Risks_right_botton">
-            Read The Risks <img :src="arrow" alt="" />
+            Read The Risks <img :src="width > 840 ? arrow : arrow1" alt="" />
           </div>
         </div>
       </div>
