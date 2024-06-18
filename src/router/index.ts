@@ -14,7 +14,13 @@ let router = createRouter({
       path: '/', component: layout,
       children: [
         { path: '', component: () => import('@/views/home/index.vue') },
-        { path: '/test', component: () => import('@/views/test/index.vue') },
+        { path: '/our-values', component: () => import('@/views/OurValues/index.vue') },
+        { path: '/our-story', component: () => import('@/views/OurStory/index.vue') },
+        { path: '/what-we-do', component: () => import('@/views/WhatWeDo/index.vue') },
+        { path: '/policy-analysis', component: () => import('@/views/WhatWeDo/PolicyAnalysis.vue') },
+        { path: '/policy-advisory', component: () => import('@/views/WhatWeDo/PolicyAdvisory.vue') },
+        { path: '/communications-strategy', component: () => import('@/views/WhatWeDo/CommunicationsStrategy.vue') },
+
       ]
     },
   ],
