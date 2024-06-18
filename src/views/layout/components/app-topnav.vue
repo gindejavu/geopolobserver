@@ -105,8 +105,8 @@ const toggleBox = async () => {
   <nav class="app-topnav">
     <div class="container">
       <router-link class="pageItem" @click="clickPage(0)" to="/">
-        <!-- <img src="@/assets/svgs/Logo.svg" alt="" /> -->
-        <div class="logo">Geopolobserver</div>
+        <img src="@/assets/svgs/Logo.svg" alt="" />
+        <!-- <div class="logo">Geopolobserver</div> -->
         <!-- <div class="logo">GEOPOLOBSERVER</div> -->
       </router-link>
 

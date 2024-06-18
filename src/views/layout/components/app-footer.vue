@@ -80,8 +80,8 @@ onBeforeUnmount(() => {
   <nav class="app-topnav">
     <div class="container">
       <router-link class="pageItem" @click="clickPage(0)" to="/">
-        <!-- <img src="@/assets/svgs/Quick_Links_logo.svg" alt="" /> -->
-        <div class="logo">Geopolobserver</div>
+        <img src="@/assets/svgs/Logo.svg" alt="" />
+        <!-- <div class="logo">Geopolobserver</div> -->
       </router-link>
 
       <div class="right">
