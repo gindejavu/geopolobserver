@@ -92,7 +92,11 @@ const updatedWidth = function () {
 <template>
   <nav class="app-topnav">
     <div class="container">
-      <router-link class="pageItem" @click="clickPage(0)" to="/">
+      <router-link
+        style="height: 100%; padding-top: 10px"
+        @click="clickPage(0)"
+        to="/"
+      >
         <img v-if="width > 1140" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
 
@@ -246,16 +250,18 @@ const updatedWidth = function () {
 }
 @media (max-width: 840px) {
   .app-topnav {
-    height: 106px;
+    height: 78px;
     padding: 0 0px;
     .container {
-      height: 103px;
+      display: flex;
+      align-items: center;
+      height: 78px;
       padding: 0 20px;
     }
   }
   .scroll-to-top-button {
     position: absolute;
-    bottom: 80px;
+    bottom: 52px;
     right: 30px;
     width: 56px;
     aspect-ratio: 1.1625; /* 宽高比例缩放 */

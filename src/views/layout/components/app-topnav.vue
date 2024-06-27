@@ -132,7 +132,11 @@ const blockSelect = () => {
 <template>
   <nav class="app-topnav">
     <div class="container">
-      <router-link class="pageItem" @click="clickPage(0)" to="/">
+      <router-link
+        style="height: 100%; margin-top: 60px"
+        @click="clickPage(0)"
+        to="/"
+      >
         <img v-if="width > 1140" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
         <!-- <div class="logo">Geopolobserver</div> -->
@@ -242,6 +246,12 @@ const blockSelect = () => {
 </template>
 
 <style scoped lang="less">
+:deep(.el-drawer__header) {
+  margin-bottom: 0 !important;
+}
+:deep(.el-drawer__body) {
+  padding: 0px 20px !important;
+}
 .collapse_item {
   margin-left: 15px;
   color: rgba(27, 27, 27, 0.725);
@@ -416,6 +426,12 @@ const blockSelect = () => {
 }
 
 @media (max-width: 1430px) {
+  .app-topnav {
+    padding: 0 0px;
+    .container {
+      padding: 0 20px;
+    }
+  }
   .link_list {
     gap: 30px !important;
   }
