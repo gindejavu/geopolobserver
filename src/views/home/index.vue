@@ -76,11 +76,11 @@ const updatedWidth = function () {
           </div>
         </div>
         <div class="Our_Beloved_Partners_bottom">
-          <div class="Partners_bottom_title">SUBSCRIBE TO EAIR WEEKLY</div>
+          <div class="Partners_bottom_title">SUBSCRIBE TO GPOR WEEKLY</div>
           <div class="Partners_bottom_search">
             <div class="Partners_bottom_search_text">
-              Sign up now for EAIR weekly, the newsletter for anyone interested
-              in global politics, published by EAIR Media.
+              Sign up now for GPOR weekly, the newsletter for anyone interested
+              in global politics, published by GPOR Media.
             </div>
             <div class="Partners_bottom_search_input">
               <el-input v-model="input" placeholder="Email">
@@ -125,7 +125,7 @@ const updatedWidth = function () {
         </div>
         <div class="Top_Risks_right">
           <div class="Top_Risks_right_title">TOP RISKS 2024</div>
-          <div class="Top_Risks_right_text">LATEST FROM EAIR GROUP:</div>
+          <div class="Top_Risks_right_text">LATEST FROM GPOR GROUP:</div>
           <div class="op_Risks_right_botton">
             Read The Risks <img :src="width > 840 ? arrow : arrow1" alt="" />
           </div>

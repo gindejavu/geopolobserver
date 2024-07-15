@@ -17,7 +17,7 @@
               actionable insight for clients is at the core of our value.
             </p>
             <p>
-              EAIR analysts leverage deep country and thematic expertise with
+              GPOR analysts leverage deep country and thematic expertise with
               quantitative methodologies to forecast fast-moving risks and
               opportunities. Clients turn to our high-caliber expertise and
               geopolitical foresight to make major business and investment
@@ -30,13 +30,13 @@
                 >generate value for our clients through direct interaction with
                 our analysts.</span
               >
-              EAIR analysts work in real time with clients to connect the dots
+              GPOR analysts work in real time with clients to connect the dots
               between politics and markets and business outcomes. The
               relationship between our clients and analysts is deep, enduring,
               and profitable.
             </p>
             <p>
-              What distinguishes EAIR advisory is the unfettered access our
+              What distinguishes GPOR advisory is the unfettered access our
               clients have to analysts—the world’s foremost experts on politics
               and geopolitical risk. We offer impactful, custom advisory with
               in-person meetings, custom briefings, one-on-one video
@@ -50,7 +50,7 @@
               <li>Speaking engagements and macro strategy conversations</li>
             </div>
             <p>
-              EAIR country and sector expertise is anchored by deep local
+              GPOR country and sector expertise is anchored by deep local
               knowledge and global in breadth, spanning Africa, Asia, Eurasia,
               Europe, Latin America, the Middle East, and North America. Our
               analysts also examine global political patterns and transnational

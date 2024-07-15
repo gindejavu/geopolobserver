@@ -39,7 +39,7 @@ const WhatWeDoyArticle_icon = ref([
               around growth strategies, cost optimization, investment
               allocations, and entering or exiting markets, geopolitics
               introduces wild cards that can make or break even the most
-              well-crafted plans. EAIR Group provides independent geopolitical
+              well-crafted plans. GPOR Group provides independent geopolitical
               advisory by tapping into a global network of leading experts and
               unconventional thinkers across disciplines. Our dedicated project
               teams deliver in-depth analysis and foresight that traditional
@@ -58,7 +58,7 @@ const WhatWeDoyArticle_icon = ref([
               </p>
               <p>
                 Future Trends and Foresight: Boards and leadership teams need to
-                balance present performance with future positioning. EAIR
+                balance present performance with future positioning. GPOR
                 filters and prioritizes emerging global trends, identifying
                 those most relevant to clients’ long-term strategies and
                 investments.
@@ -73,7 +73,7 @@ const WhatWeDoyArticle_icon = ref([
                 Risk Monitoring: We tie specific geopolitical risks to
                 performance drivers, developing tailored metrics for continuous
                 risk awareness. Our monitoring keeps clients ahead of potential
-                disruptions.EAIR’s geopolitical advisory leverages our diverse
+                disruptions.GPOR’s geopolitical advisory leverages our diverse
                 team’s multidisciplinary expertise combined with insights from
                 an unmatched network of unconventional thinkers across academia,
                 intelligence, policymaking, and more. This allows us to

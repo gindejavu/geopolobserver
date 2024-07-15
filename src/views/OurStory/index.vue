@@ -12,10 +12,10 @@
           <div class="OurStoryArticle_text_big">A Contrarian Voice</div>
           <div class="OurStoryArticle_text">
             Founded in 2015 by a team of seasoned political scientists and
-            regional experts, EAIR was born out of a conviction that
+            regional experts, GPOR was born out of a conviction that
             conventional wisdom often fails to capture the nuances and
             undercurrents driving events in this pivotal part of the world.
-            Rejecting the mainstream narratives, EAIR vows to offer insightful
+            Rejecting the mainstream narratives, GPOR vows to offer insightful
             and unconventional analysis that challenges the status quo and sheds
             light on the hidden forces at play. From a modest office in Hong
             Kong, the firm’s founders set out to build a team of analysts with
@@ -31,11 +31,11 @@
             Navigating the Complexities of East Asia
           </div>
           <div class="OurStoryArticle_text">
-            As EAIR has grown, so has its reputation for delivering incisive
+            As GPOR has grown, so has its reputation for delivering incisive
             analysis that often ran counter to prevailing narratives. Whether
             examining the intricate web of alliances and rivalries in the South
             China Sea, the shifting sands of domestic politics in Japan and
-            South Korea, or the long-term implications of China’s rise, EAIR
+            South Korea, or the long-term implications of China’s rise, GPOR
             reports are prized for their intellectual rigor and unconventional
             thinking.The firm’s analysts were not afraid to challenge
             conventional wisdom, often offering contrarian perspectives that
@@ -49,7 +49,7 @@
             A Trusted Voice in Uncertain Times
           </div>
           <div class="OurStoryArticle_text">
-            Over the years, EAIR has established itself as a trusted voice in an
+            Over the years, GPOR has established itself as a trusted voice in an
             increasingly uncertain world. Its client base has expanded to
             include multinational corporations, governments, and international
             organizations, all seeking to navigate the complex geopolitical
@@ -57,10 +57,10 @@
             unwavering commitment to intellectual honesty, its deep
             understanding of the region’s cultural and historical nuances, and
             its willingness to challenge conventional thinking. In an era of
-            rapid change and shifting power dynamics, EAIR has become a beacon
+            rapid change and shifting power dynamics, GPOR has become a beacon
             of insight, offering a unique perspective that helps clients make
             informed decisions and stay ahead of the curve. Today, with offices
-            in key cities across the Asia-Pacific, EAIR remains true to its
+            in key cities across the Asia-Pacific, GPOR remains true to its
             founding principles, providing insightful and unconventional
             analysis that illuminates the hidden forces shaping the future of
             East Asia.

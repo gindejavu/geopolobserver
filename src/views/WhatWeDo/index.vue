@@ -36,7 +36,7 @@ const WhatWeDoyArticle_icon = ref([
             day, every day.
           </div>
           <div class="WhatWeDoyArticle_text">
-            EAIR provides the marketplace with a comprehensive and integrated
+            GPOR provides the marketplace with a comprehensive and integrated
             set of political risk solutions. Our clients range from macro hedge
             funds to institutional investors, from family businesses to the
             world’s largest multinational corporations. What they all share is a
@@ -52,7 +52,7 @@ const WhatWeDoyArticle_icon = ref([
             world of geopolitics.
           </div>
           <div class="WhatWeDoyArticle_text">
-            Our diverse set of EAIR Group capabilities include:
+            Our diverse set of GPOR Group capabilities include:
           </div>
         </div>
         <div

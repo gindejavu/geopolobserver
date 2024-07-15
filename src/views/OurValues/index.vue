@@ -9,7 +9,7 @@
     <div class="container">
       <div class="OurValuesArticle">
         <div class="OurValuesArticle_text1">
-          At EAIR, our mission is to provide the tools and understanding needed
+          At GPOR, our mission is to provide the tools and understanding needed
           in a world where politics drives disruption. We put
           <span class="text_bold">politics first</span> for our clients, and we
           aspire to be the leading place people come to find out about the

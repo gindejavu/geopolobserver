@@ -36,7 +36,7 @@
               Scenario Planning and Forecasting
             </div>
             <p>
-              EAIR conducts in-depth assessments of the geopolitical risks and
+              GPOR conducts in-depth assessments of the geopolitical risks and
               opportunities in the East Asian markets you operate in or plan to
               enter. Our analysis covers political instability, regulatory
               changes, trade tensions, and other factors that could impact your
@@ -64,7 +64,7 @@
           <div class="WhatWeDoyArticle_text_biggpa">
             <div class="WhatWeDoyArticle_text_big">Geopolitical Monitoring</div>
             <p>
-              EAIR continuously monitors and analyzes geopolitical developments,
+              GPOR continuously monitors and analyzes geopolitical developments,
               trends, and events in the East Asian region. We provide regular
               reports and briefings to keep you informed about the latest
               developments and their potential impact on your business
