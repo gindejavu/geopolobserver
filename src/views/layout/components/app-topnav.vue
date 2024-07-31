@@ -131,7 +131,11 @@ const blockSelect = () => {
 
 <template>
   <nav class="app-topnav">
-    <div class="ContactUs">GMail: <span>geopolobserver.c@gmail.com</span></div>
+    <div style="margin: 0 auto; max-width: 1728px">
+      <div class="ContactUs">
+        EMail: <span>geopolobserver.c@gmail.com</span>
+      </div>
+    </div>
     <div class="container">
       <router-link
         style="height: 100%; margin-top: 60px"
@@ -248,6 +252,7 @@ const blockSelect = () => {
 
 <style scoped lang="less">
 .ContactUs {
+  width: 100%;
   font-family: Marsek;
   font-size: 30px;
   font-style: normal;
