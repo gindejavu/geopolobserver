@@ -46,7 +46,7 @@ const copyToClipboard = () => {
             interaction.
           </div>
           <div class="OurStoryArticle_text_big">
-            This is our email:
+            Contact us:
             <span
               style="color: #3a5dae; cursor: pointer"
               @click="copyToClipboard"
