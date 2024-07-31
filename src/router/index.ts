@@ -20,6 +20,7 @@ let router = createRouter({
         { path: '/policy-analysis', component: () => import('@/views/WhatWeDo/PolicyAnalysis.vue') },
         { path: '/policy-advisory', component: () => import('@/views/WhatWeDo/PolicyAdvisory.vue') },
         { path: '/communications-strategy', component: () => import('@/views/WhatWeDo/CommunicationsStrategy.vue') },
+        { path: '/contact-us', component: () => import('@/views/home/ContactUs.vue') },
 
       ]
     },

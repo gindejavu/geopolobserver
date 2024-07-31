@@ -131,13 +131,14 @@ const blockSelect = () => {
 
 <template>
   <nav class="app-topnav">
+    <div class="ContactUs">GMail: <span>geopolobserver.c@gmail.com</span></div>
     <div class="container">
       <router-link
         style="height: 100%; margin-top: 60px"
         @click="clickPage(0)"
         to="/"
       >
-        <img v-if="width > 1140" src="@/assets/svgs/Logo.svg" alt="" />
+        <img v-if="width > 840" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
         <!-- <div class="logo">Geopolobserver</div> -->
         <!-- <div class="logo">GEOPOLOBSERVER</div> -->
@@ -246,6 +247,20 @@ const blockSelect = () => {
 </template>
 
 <style scoped lang="less">
+.ContactUs {
+  font-family: Marsek;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #000;
+  display: flex;
+  justify-content: end;
+  padding: 0 25px;
+  span {
+    color: #6832c5;
+  }
+}
 :deep(.el-drawer__header) {
   margin-bottom: 0 !important;
 }
@@ -343,7 +358,7 @@ const blockSelect = () => {
   opacity: 1;
 }
 .app-topnav {
-  height: 176px;
+  height: 230px;
   top: 0;
   width: 100vw;
   box-sizing: border-box;
@@ -449,11 +464,15 @@ const blockSelect = () => {
 }
 @media (max-width: 840px) {
   .app-topnav {
-    height: 106px;
+    height: 196px;
     padding: 0 0px;
     .container {
       height: 103px;
       padding: 0 20px;
+    }
+    .ContactUs {
+      font-weight: 500;
+      font-size: 20px;
     }
   }
 }

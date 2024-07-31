@@ -55,7 +55,7 @@ const updatedWidth = function () {
           </div>
           <div class="top_Tariffs_left_button_f">
             <div class="top_Tariffs_left_button">Learn More</div>
-            <div class="top_Tariffs_left_button">Contact Us</div>
+            <div class="top_Tariffs_left_button" @click="$router.push('/contact-us')">Contact Us</div>
           </div>
         </div>
         <div class="top_Tariffs_right">
