@@ -156,6 +156,8 @@ onMounted(async () => {
       font-size: 18px;
       text-decoration: underline; // 去掉下划线
       color: #6832c5;
+      //鼠标变小手
+      cursor: pointer;
     }
   }
 }
