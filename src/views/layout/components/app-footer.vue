@@ -10,7 +10,8 @@ const pageList = [
   { id: 'pagelist0', to: '/', name: 'HOME' },
   { id: 'pagelist1', to: '/what-we-do', name: 'WHAT WE DO' },
   { id: 'pagelist2', to: '/our-story', name: 'OUR STORY' },
-  { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' }
+  { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' },
+  { id: 'pagelist4', to: '/news', name: 'NEWS' }
 ]
 const navigationStore = useNavigationStore()
 const { pageItemWidth, distanceToLeft } = storeToRefs(navigationStore)
@@ -97,13 +98,13 @@ const updatedWidth = function () {
         @click="clickPage(0)"
         to="/"
       >
-        <img v-if="width > 1140" src="@/assets/svgs/Logo.svg" alt="" />
+        <img v-if="width > 840" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
 
         <!-- <div class="logo">Geopolobserver</div> -->
       </router-link>
 
-      <div class="right" v-if="width > 1140">
+      <div class="right" v-if="width > 1240">
         <div class="link_list" id="link_list435">
           <div
             v-for="(item, index) in pageList"
@@ -184,7 +185,7 @@ const updatedWidth = function () {
   width: 100vw;
   box-sizing: border-box;
   background: #f1f7f4;
-  padding: 0 54px;
+  padding: 0 44px;
   .container {
     border-top: 1px solid #000;
     height: 138px;
@@ -288,6 +289,100 @@ const updatedWidth = function () {
       width: 20px;
       transform: rotate(-30deg);
       height: 20px;
+    }
+  }
+}
+@media (max-width: 1681px) {
+  .app-topnav {
+    padding: 0 0px;
+    .container {
+      padding: 0 20px;
+    }
+  }
+  .link_list {
+    gap: 40px !important;
+  }
+  .right {
+    gap: 30px !important;
+  }
+}
+@media (max-width: 1430px) {
+  .app-topnav {
+    padding: 0 0px;
+    .container {
+      padding: 0 20px;
+    }
+  }
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 40px !important;
+  }
+  .top_button {
+    width: 166px;
+    height: 45px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 1410px) {
+  .Logo_a {
+    width: 400px;
+    margin-top: 76px !important;
+  }
+  .app-topnav {
+    padding: 0 0px;
+    .container {
+      padding: 0 20px;
+    }
+  }
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 40px !important;
+  }
+}
+@media (max-width: 1340px) {
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 20px !important;
+  }
+}
+@media (max-width: 1300px) {
+  .Logo_a {
+    width: 300px;
+    margin-top: 90px !important;
+  }
+  .link_list {
+    gap: 30px !important;
+    font-size: 20px;
+  }
+  .right {
+    gap: 20px !important;
+  }
+}
+@media (max-width: 1230px) {
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 20px !important;
+  }
+}
+@media (max-width: 840px) {
+  .app-topnav {
+    height: 196px;
+    padding: 0 0px;
+    .container {
+      height: 103px;
+      padding: 0 20px;
+    }
+    .ContactUs {
+      font-weight: 500;
+      font-size: 20px;
     }
   }
 }

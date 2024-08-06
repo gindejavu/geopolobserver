@@ -21,6 +21,8 @@ let router = createRouter({
         { path: '/policy-advisory', component: () => import('@/views/WhatWeDo/PolicyAdvisory.vue') },
         { path: '/communications-strategy', component: () => import('@/views/WhatWeDo/CommunicationsStrategy.vue') },
         { path: '/contact-us', component: () => import('@/views/home/ContactUs.vue') },
+        { path: '/news', component: () => import('@/views/news/index.vue') },
+        { path: '/news/detail', component: () => import('@/views/news/detail.vue') },
 
       ]
     },

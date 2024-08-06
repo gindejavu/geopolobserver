@@ -10,7 +10,8 @@ const pageList = [
   { id: 'pagelist0', to: '/', name: 'HOME' },
   { id: 'pagelist1', to: '/what-we-do', name: 'WHAT WE DO' },
   { id: 'pagelist2', to: '/our-story', name: 'OUR STORY' },
-  { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' }
+  { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' },
+  { id: 'pagelist4', to: '/news', name: 'NEWS' }
 ]
 
 const bbboxitem = ref([
@@ -141,6 +142,7 @@ const blockSelect = () => {
         style="height: 100%; margin-top: 60px"
         @click="clickPage(0)"
         to="/"
+        class="Logo_a"
       >
         <img v-if="width > 840" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
@@ -148,7 +150,7 @@ const blockSelect = () => {
         <!-- <div class="logo">GEOPOLOBSERVER</div> -->
       </router-link>
 
-      <div class="right" v-if="width > 1140">
+      <div class="right" v-if="width > 1240">
         <div class="link_list" id="link_list435">
           <div
             v-for="(item, index) in pageList"
@@ -202,7 +204,7 @@ const blockSelect = () => {
         class="list_caption_image"
         src="@/assets/svgs/list_caption.svg"
         alt=""
-        v-if="width < 1140"
+        v-if="width < 1240"
         @click="blockSelect"
       />
       <el-drawer
@@ -368,7 +370,7 @@ const blockSelect = () => {
   width: 100vw;
   box-sizing: border-box;
   background: #f1f7f4;
-  padding: 0 54px;
+  padding: 0 44px;
   .container {
     height: 175px;
     border-bottom: 1px solid #000;
@@ -418,8 +420,8 @@ const blockSelect = () => {
 }
 .top_button {
   cursor: pointer;
-  width: 202px;
-  height: 65px;
+  width: 196px;
+  height: 55px;
   flex-shrink: 0;
   border-radius: 54px;
   background: #6832c5;
@@ -430,8 +432,8 @@ const blockSelect = () => {
   font-family: Poppins;
   font-size: 20px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 95.255%;
+  font-weight: 500;
+  line-height: 94.255%;
   transition: 0.2s linear;
   &:hover {
     transform: scale(1.02);
@@ -445,6 +447,20 @@ const blockSelect = () => {
   margin-left: 20px;
 }
 
+@media (max-width: 1681px) {
+  .app-topnav {
+    padding: 0 0px;
+    .container {
+      padding: 0 20px;
+    }
+  }
+  .link_list {
+    gap: 40px !important;
+  }
+  .right {
+    gap: 30px !important;
+  }
+}
 @media (max-width: 1430px) {
   .app-topnav {
     padding: 0 0px;
@@ -457,6 +473,50 @@ const blockSelect = () => {
   }
   .right {
     gap: 40px !important;
+  }
+  .top_button {
+    width: 166px;
+    height: 45px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 1410px) {
+  .Logo_a {
+    width: 400px;
+    margin-top: 76px !important;
+  }
+  .app-topnav {
+    padding: 0 0px;
+    .container {
+      padding: 0 20px;
+    }
+  }
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 40px !important;
+  }
+}
+@media (max-width: 1340px) {
+  .link_list {
+    gap: 30px !important;
+  }
+  .right {
+    gap: 20px !important;
+  }
+}
+@media (max-width: 1300px) {
+  .Logo_a {
+    width: 300px;
+    margin-top: 90px !important;
+  }
+  .link_list {
+    gap: 30px !important;
+    font-size: 20px;
+  }
+  .right {
+    gap: 20px !important;
   }
 }
 @media (max-width: 1230px) {
