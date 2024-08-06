@@ -55,7 +55,12 @@ const updatedWidth = function () {
           </div>
           <div class="top_Tariffs_left_button_f">
             <div class="top_Tariffs_left_button">Learn More</div>
-            <div class="top_Tariffs_left_button" @click="$router.push('/contact-us')">Contact Us</div>
+            <div
+              class="top_Tariffs_left_button"
+              @click="$router.push('/contact-us')"
+            >
+              Contact Us
+            </div>
           </div>
         </div>
         <div class="top_Tariffs_right">
@@ -569,7 +574,7 @@ const updatedWidth = function () {
   .home_view {
     .container {
       .top_Tariffs {
-        padding: 60px 50px;
+        padding: 60px 20px;
         .top_Tariffs_right {
           width: 330px;
           height: 330px;
@@ -734,6 +739,7 @@ const updatedWidth = function () {
         gap: 75px;
         flex-direction: column;
 
+        padding-left: 20px;
         .Top_Risks_left {
           position: relative;
 

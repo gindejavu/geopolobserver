@@ -262,7 +262,7 @@ const updatedWidth = function () {
   }
   .scroll-to-top-button {
     position: absolute;
-    bottom: 52px;
+    bottom: 76px;
     right: 30px;
     width: 56px;
     aspect-ratio: 1.1625; /* 宽高比例缩放 */
