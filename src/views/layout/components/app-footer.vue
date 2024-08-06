@@ -249,49 +249,6 @@ const updatedWidth = function () {
     gap: 30px !important;
   }
 }
-@media (max-width: 840px) {
-  .app-topnav {
-    height: 78px;
-    padding: 0 0px;
-    .container {
-      display: flex;
-      align-items: center;
-      height: 78px;
-      padding: 0 20px;
-    }
-  }
-  .scroll-to-top-button {
-    position: absolute;
-    bottom: 76px;
-    right: 30px;
-    width: 56px;
-    aspect-ratio: 1.1625; /* 宽高比例缩放 */
-    border-radius: 0px;
-    // 旋转
-
-    object-fit: cover; /* 保持图片原有比例, 会有剪切*/
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
-
-    background: #6832c5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    cursor: pointer;
-
-    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1))
-      rotate(30deg); /* 对图片进行移动和缩放 */
-    transition: 0.2s linear; /* 过渡效果 */
-    &:hover {
-      --_t: 1.1;
-    }
-    img {
-      width: 20px;
-      transform: rotate(-30deg);
-      height: 20px;
-    }
-  }
-}
 @media (max-width: 1681px) {
   .app-topnav {
     padding: 0 0px;
@@ -374,15 +331,47 @@ const updatedWidth = function () {
 }
 @media (max-width: 840px) {
   .app-topnav {
-    height: 196px;
+    height: 70px;
     padding: 0 0px;
     .container {
-      height: 103px;
+      display: flex;
+      align-items: center;
+      height: 70px;
       padding: 0 20px;
     }
-    .ContactUs {
-      font-weight: 500;
-      font-size: 20px;
+  }
+  .logo {
+    width: 100px;
+  }
+  .scroll-to-top-button {
+    position: absolute;
+    bottom: 48px;
+    right: 30px;
+    width: 56px;
+    aspect-ratio: 1.1625; /* 宽高比例缩放 */
+    border-radius: 0px;
+    // 旋转
+
+    object-fit: cover; /* 保持图片原有比例, 会有剪切*/
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+
+    background: #6832c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1))
+      rotate(30deg); /* 对图片进行移动和缩放 */
+    transition: 0.2s linear; /* 过渡效果 */
+    &:hover {
+      --_t: 1.1;
+    }
+    img {
+      width: 20px;
+      transform: rotate(-30deg);
+      height: 20px;
     }
   }
 }

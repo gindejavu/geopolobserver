@@ -317,17 +317,9 @@ const blockSelect = () => {
   padding: 20px 0;
 }
 
-.logo {
-  color: #1b1b1b;
-  font-family: Marsek;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
 .list_caption_image {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 .bbbox {
   position: absolute;
@@ -528,11 +520,15 @@ const blockSelect = () => {
   }
 }
 @media (max-width: 840px) {
+  .Logo_a {
+    width: 200px;
+    margin-top: 40px !important;
+  }
   .app-topnav {
-    height: 196px;
+    height: 186px;
     padding: 0 0px;
     .container {
-      height: 103px;
+      height: 80px;
       padding: 0 20px;
     }
     .ContactUs {

@@ -204,7 +204,7 @@ const WhatWeDoyArticle_icon = ref([
 
         .child_top_title {
           font-size: 48px;
-          margin-left: 15%;
+          margin-left: 20px;
           margin-bottom: 50px;
         }
       }

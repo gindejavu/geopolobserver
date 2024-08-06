@@ -158,7 +158,6 @@ const WhatWeDoyArticle_icon = ref([
 
 @media (max-width: 840px) {
   .WhatWeDoyArticle_text_biggap {
-
     gap: 20px;
   }
   .WhatWeDoy_title {
@@ -179,7 +178,7 @@ const WhatWeDoyArticle_icon = ref([
 
         .child_top_title {
           font-size: 48px;
-          margin-left: 20%;
+          margin-left: 12%;
           margin-bottom: 50px;
         }
       }

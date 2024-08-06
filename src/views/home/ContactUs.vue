@@ -193,7 +193,7 @@ const copyToClipboard = () => {
         height: 420px;
         .child_top_title {
           font-size: 48px;
-          margin-left: 24%;
+          margin-left: 48px;
           margin-bottom: 50px;
         }
       }
