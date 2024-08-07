@@ -17,7 +17,7 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 let pinia = createPinia()
 
-createApp(App).use(router)
+createApp(App)
     .use(ElementPlus)
 
     .use(router)

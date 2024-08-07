@@ -1,22 +1,12 @@
 <script setup lang="ts" name="HomeView">
 import { ElMessage } from 'element-plus'
+import clipboard3 from 'vue-clipboard3'
 
-const copyToClipboard = () => {
+const copyToClipboard = async () => {
   const email = 'geopolobserver.c@gmail.com' // 邮箱内容
-  navigator.clipboard.writeText(email).then(
-    () => {
-      ElMessage.success({
-        message: 'Email copied to clipboard!',
-        type: 'success'
-      })
-    },
-    () => {
-      ElMessage.error({
-        message: '复制邮箱失败',
-        type: 'error'
-      })
-    }
-  )
+  const { toClipboard } = clipboard3()
+  await toClipboard(email) // str 为需要复制的文字
+  ElMessage.success('The mailbox was copied to the clipboard')
 }
 </script>
 <template>

@@ -11,7 +11,9 @@ const pageList = [
   { id: 'pagelist1', to: '/what-we-do', name: 'WHAT WE DO' },
   { id: 'pagelist2', to: '/our-story', name: 'OUR STORY' },
   { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' },
-  { id: 'pagelist4', to: '/news', name: 'NEWS' }
+  { id: 'pagelist4', to: '/news', name: 'NEWS' },
+  { id: 'pagelist5', to: '/thesis', name: 'THESIS' },
+  { id: 'pagelist6', to: '/books', name: 'BOOKS' }
 ]
 
 const bbboxitem = ref([
@@ -86,7 +88,6 @@ const bbboxEnter = (id: string) => {
   if (id === 'pagelist1') {
     bbboxClickBoo.value = true
   }
-  console.log('bbboxEnter', bbboxClickBoo.value)
 }
 const pageItemWidth1 = ref(0)
 const toggleBox = async () => {
@@ -100,9 +101,8 @@ const toggleBox = async () => {
       rect.width,
       rect.left - parentRect.left
     )
-    console.log('navigationStore', pageItemWidth.value)
+
     pageItemWidth1.value = pageItemWidth.value
-    console.log('navigationStore1', pageItemWidth1.value)
   }
 }
 
@@ -207,12 +207,7 @@ const blockSelect = () => {
         v-if="width < 1240"
         @click="blockSelect"
       />
-      <el-drawer
-        v-model="selectType"
-        :lock-scroll="false"
-        z-index="10000"
-        size="100%"
-      >
+      <el-drawer v-model="selectType" :lock-scroll="false" size="100%">
         <div
           class="drawerpageItem"
           v-for="(item, index) in pageList"

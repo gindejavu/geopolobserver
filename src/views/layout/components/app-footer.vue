@@ -11,7 +11,9 @@ const pageList = [
   { id: 'pagelist1', to: '/what-we-do', name: 'WHAT WE DO' },
   { id: 'pagelist2', to: '/our-story', name: 'OUR STORY' },
   { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' },
-  { id: 'pagelist4', to: '/news', name: 'NEWS' }
+  { id: 'pagelist4', to: '/news', name: 'NEWS' },
+  { id: 'pagelist5', to: '/thesis', name: 'THESIS' },
+  { id: 'pagelist6', to: '/books', name: 'BOOKS' }
 ]
 const navigationStore = useNavigationStore()
 const { pageItemWidth, distanceToLeft } = storeToRefs(navigationStore)

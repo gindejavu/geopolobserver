@@ -7,16 +7,15 @@ const checked = ref(false)
 const input = ref('')
 const select = ref('')
 const Partners_top_content_item = ref([
-  '/src/assets/images/Partners_top_content1.png',
-  '/src/assets/images/Partners_top_content2.png',
-  '/src/assets/images/Partners_top_content3.png',
-  '/src/assets/images/Partners_top_content4.png',
-  '/src/assets/images/Partners_top_content5.png',
-  '/src/assets/images/Partners_top_content6.png'
+  '@/assets/images/Partners_top_content1.png',
+  '@/assets/images/Partners_top_content2.png',
+  '@/assets/images/Partners_top_content3.png',
+  '@/assets/images/Partners_top_content4.png',
+  '@/assets/images/Partners_top_content5.png',
+  '@/assets/images/Partners_top_content6.png'
 ])
 
 const inputButtonClick = () => {
-  console.log(input.value)
   if (!checked.value) {
     ElMessage.error(
       'Please read, understand and agree to the Privacy Policy and Terms of Use'
@@ -71,12 +70,23 @@ const updatedWidth = function () {
         <div class="Our_Beloved_Partners_top">
           <div class="Partners_top_title">OUR BELOVED PARTNERS</div>
           <div class="Partners_top_content">
-            <div
-              class="Partners_top_content_item"
-              v-for="(item, index) in Partners_top_content_item"
-              :key="index"
-            >
-              <img :src="item" alt="" />
+            <div class="Partners_top_content_item">
+              <img src="@/assets/images/Partners_top_content1.png" alt="" />
+            </div>
+            <div class="Partners_top_content_item">
+              <img src="@/assets/images/Partners_top_content2.png" alt="" />
+            </div>
+            <div class="Partners_top_content_item">
+              <img src="@/assets/images/Partners_top_content3.png" alt="" />
+            </div>
+            <div class="Partners_top_content_item">
+              <img src="@/assets/images/Partners_top_content4.png" alt="" />
+            </div>
+            <div class="Partners_top_content_item">
+              <img src="@/assets/images/Partners_top_content5.png" alt="" />
+            </div>
+            <div class="Partners_top_content_item">
+              <img src="@/assets/images/Partners_top_content6.png" alt="" />
             </div>
           </div>
         </div>
@@ -247,7 +257,6 @@ const updatedWidth = function () {
           // flex-wrap: wrap;
           gap: 51px;
           .Partners_top_content_item {
-            flex-shrink: 0;
             width: 220px;
           }
         }
