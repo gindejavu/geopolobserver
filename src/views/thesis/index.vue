@@ -21,6 +21,10 @@ onMounted(async () => {
   GetThesis()
   loading.value = false
 })
+
+const handleClick = (url: string) => {
+  window.open(url, '_blank')
+}
 </script>
 <template>
   <div v-loading.fullscreen.lock="loading" v-if="ThesisData" class="home_view">
@@ -43,7 +47,13 @@ onMounted(async () => {
           </div>
 
           <div class="thesis_url">
-            <a :href="item.url">Read the original</a>
+            <!-- <a :href="item.url">Read the original</a> -->
+            <div
+              style="color: #6832c5; text-decoration: underline"
+              @click="handleClick(item.url)"
+            >
+              Read the original
+            </div>
           </div>
         </div>
       </div>
