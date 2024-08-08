@@ -25,7 +25,6 @@ let router = createRouter({
         { path: '/news/detail', component: () => import('@/views/news/detail.vue') },
         { path: '/thesis', component: () => import('@/views/thesis/index.vue') },
         { path: '/books', component: () => import('@/views/books/index.vue') },
-        { path: '/books/detail', component: () => import('@/views/books/detail.vue') },
       ]
     },
   ],
