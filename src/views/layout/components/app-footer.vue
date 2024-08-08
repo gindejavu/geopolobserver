@@ -280,8 +280,15 @@ const updatedWidth = () => {
       padding: 0 20px;
     }
   }
+  .scroll-to-top-button {
+    bottom: 60px;
+  }
 }
 @media (max-width: 840px) {
+  .scroll-to-top-button {
+    bottom: 40px;
+    
+  }
   .Logo_a {
     width: 200px;
   }
