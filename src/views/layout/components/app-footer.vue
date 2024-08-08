@@ -1,64 +1,32 @@
 <script lang="ts" setup>
-import router from '@/router'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { onBeforeRouteUpdate } from 'vue-router'
+import { ref, onMounted, watch, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia'
 
-const drawer = ref(false)
+const navigationStore = useNavigationStore()
+const { activePage } = storeToRefs(navigationStore)
+const route = useRoute()
+
 const pageList = [
   { id: 'pagelist0', to: '/', name: 'HOME' },
   { id: 'pagelist1', to: '/what-we-do', name: 'WHAT WE DO' },
   { id: 'pagelist2', to: '/our-story', name: 'OUR STORY' },
   { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' },
   { id: 'pagelist4', to: '/news', name: 'NEWS' },
-  { id: 'pagelist5', to: '/thesis', name: 'THESIS' },
-  { id: 'pagelist6', to: '/books', name: 'BOOKS' }
+  { id: 'pagelist5', to: '/thesis', name: 'LEARN' }
 ]
-const navigationStore = useNavigationStore()
-const { pageItemWidth, distanceToLeft } = storeToRefs(navigationStore)
-
-const goUrl = (to: string) => {
-  let pageIndexValue = pageList.findIndex(item => item.to === to)
-  if (pageIndexValue !== -1) {
-    const element = document.getElementById(pageList[pageIndexValue].id)
-    if (element) {
-      const rect = element.getBoundingClientRect()
-      const parentRect = (
-        document.getElementById('link_list435') as any
-      ).getBoundingClientRect()
-      navigationStore.updateNavigationState(
-        rect.width,
-        rect.left - parentRect.left
-      )
-    }
-  }
-}
 
 onMounted(() => {
-  const path = window.location.pathname
-  goUrl(path)
+  navigationStore.setActivePageByPath(route.path)
+  window.addEventListener('resize', updatedWidth)
+  window.addEventListener('scroll', scrollHandler)
 })
 
-// 监听路由变化
-onBeforeRouteUpdate(to => {
-  goUrl(to.path)
+watch(route, () => {
+  navigationStore.setActivePageByPath(route.path)
+  scrollToTop()
 })
-
-const clickPage = (index: number) => {
-  const element = document.getElementById(pageList[index].id)
-  if (element) {
-    const rect = element.getBoundingClientRect()
-    const parentRect = (
-      document.getElementById('link_list435') as any
-    ).getBoundingClientRect()
-    navigationStore.updateNavigationState(
-      rect.width,
-      rect.left - parentRect.left
-    )
-    scrollToTop()
-  }
-}
 
 const scrollHandler = () => {
   isVisible.value =
@@ -71,23 +39,13 @@ const scrollToTop = () => {
 
 const isVisible = ref(false)
 
-onMounted(() => {
-  window.addEventListener('resize', updatedWidth)
-  window.addEventListener('scroll', scrollHandler)
-})
-
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updatedWidth)
-
   window.removeEventListener('scroll', scrollHandler)
 })
 
 const width = ref(window.innerWidth)
-window.onresize = () => {
-  // 监听窗口大小变化
-  width.value = window.innerWidth
-}
-const updatedWidth = function () {
+const updatedWidth = () => {
   width.value = window.innerWidth
 }
 </script>
@@ -97,39 +55,29 @@ const updatedWidth = function () {
     <div class="container">
       <router-link
         style="height: 100%; padding-top: 10px"
-        @click="clickPage(0)"
         to="/"
+        class="Logo_a"
       >
         <img v-if="width > 840" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
-
-        <!-- <div class="logo">Geopolobserver</div> -->
       </router-link>
 
       <div class="right" v-if="width > 1240">
         <div class="link_list" id="link_list435">
-          <div
-            v-for="(item, index) in pageList"
-            @click="clickPage(index)"
-            :key="index"
-          >
+          <div v-for="(item, index) in pageList" :key="index">
             <router-link class="pageTitle" :id="item.id" :to="item.to">
-              <div class="pageItem">
+              <div
+                :style="{ color: activePage === index ? '#6832c5' : '#1b1b1b' }"
+              >
                 {{ item.name }}
                 <img
-                  v-if="item.id == 'pagelist1'"
+                  v-if="item.id === 'pagelist1' || item.id === 'pagelist5'"
                   src="@/assets/svgs/DownArrow.svg"
                   alt=""
                 />
               </div>
             </router-link>
           </div>
-          <i
-            class="btnling"
-            :style="{
-              left: `${distanceToLeft + pageItemWidth / 2 - 8}px`
-            }"
-          ></i>
         </div>
       </div>
       <div @click="scrollToTop" class="scroll-to-top-button">
@@ -138,15 +86,9 @@ const updatedWidth = function () {
     </div>
   </nav>
 </template>
-
 <style scoped lang="less">
-.logo {
-  color: #1b1b1b;
-  font-family: Marsek;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+.Logo_a {
+  width: 400px;
 }
 
 .scroll-to-top-button {
@@ -182,7 +124,7 @@ const updatedWidth = function () {
 }
 
 .app-topnav {
-  height: 138px;
+  height: 128px;
   top: 0;
   width: 100vw;
   box-sizing: border-box;
@@ -190,7 +132,7 @@ const updatedWidth = function () {
   padding: 0 44px;
   .container {
     border-top: 1px solid #000;
-    height: 138px;
+    height: 128px;
     display: flex;
     align-items: center;
     gap: 244px;
@@ -235,23 +177,7 @@ const updatedWidth = function () {
   }
 }
 
-@media (max-width: 1430px) {
-  .container {
-    gap: 160px !important;
-  }
-  .link_list {
-    gap: 30px !important;
-  }
-}
-@media (max-width: 1230px) {
-  .container {
-    gap: 60px !important;
-  }
-  .link_list {
-    gap: 30px !important;
-  }
-}
-@media (max-width: 1681px) {
+@media (max-width: 1734px) {
   .app-topnav {
     padding: 0 0px;
     .container {
@@ -265,7 +191,7 @@ const updatedWidth = function () {
     gap: 30px !important;
   }
 }
-@media (max-width: 1430px) {
+@media (max-width: 1465px) {
   .app-topnav {
     padding: 0 0px;
     .container {
@@ -284,11 +210,7 @@ const updatedWidth = function () {
     font-weight: 400;
   }
 }
-@media (max-width: 1410px) {
-  .Logo_a {
-    width: 400px;
-    margin-top: 76px !important;
-  }
+@media (max-width: 1415px) {
   .app-topnav {
     padding: 0 0px;
     .container {
@@ -296,10 +218,25 @@ const updatedWidth = function () {
     }
   }
   .link_list {
-    gap: 30px !important;
+    gap: 25px !important;
   }
+  .pageTitle {
+    font-size: 16px !important;
+  }
+  .pageItem {
+    img {
+      width: 16px;
+    }
+  }
+  .top_button {
+    width: 166px;
+    height: 36px;
+    font-weight: 400;
+    font-size: 18px;
+  }
+
   .right {
-    gap: 40px !important;
+    gap: 20px !important;
   }
 }
 @media (max-width: 1340px) {
@@ -313,7 +250,7 @@ const updatedWidth = function () {
 @media (max-width: 1300px) {
   .Logo_a {
     width: 300px;
-    margin-top: 90px !important;
+    margin-top: 20px;
   }
   .link_list {
     gap: 30px !important;
@@ -324,14 +261,30 @@ const updatedWidth = function () {
   }
 }
 @media (max-width: 1230px) {
+  .Logo_a {
+    margin-top: 0px;
+  }
   .link_list {
     gap: 30px !important;
   }
   .right {
     gap: 20px !important;
   }
+  .app-topnav {
+    height: 90px;
+    padding: 0 0px;
+    .container {
+      display: flex;
+      align-items: center;
+      height: 90px;
+      padding: 0 20px;
+    }
+  }
 }
 @media (max-width: 840px) {
+  .Logo_a {
+    width: 200px;
+  }
   .app-topnav {
     height: 70px;
     padding: 0 0px;
@@ -341,39 +294,9 @@ const updatedWidth = function () {
       height: 70px;
       padding: 0 20px;
     }
-  }
-  .logo {
-    width: 100px;
-  }
-  .scroll-to-top-button {
-    position: absolute;
-    bottom: 48px;
-    right: 30px;
-    width: 56px;
-    aspect-ratio: 1.1625; /* 宽高比例缩放 */
-    border-radius: 0px;
-    // 旋转
-
-    object-fit: cover; /* 保持图片原有比例, 会有剪切*/
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
-
-    background: #6832c5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    cursor: pointer;
-
-    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1))
-      rotate(30deg); /* 对图片进行移动和缩放 */
-    transition: 0.2s linear; /* 过渡效果 */
-    &:hover {
-      --_t: 1.1;
-    }
-    img {
-      width: 20px;
-      transform: rotate(-30deg);
-      height: 20px;
+    .ContactUs {
+      font-weight: 500;
+      font-size: 20px;
     }
   }
 }

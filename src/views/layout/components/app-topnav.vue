@@ -1,119 +1,147 @@
 <script lang="ts" setup>
-import router from '@/router'
-import { nextTick, onMounted, onUnmounted, ref } from 'vue'
-import { onBeforeRouteUpdate } from 'vue-router'
+import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useNavigationStore } from '@/store/navigation'
 import { storeToRefs } from 'pinia'
 
-const drawer = ref(false)
+const navigationStore = useNavigationStore()
+const { activePage } = storeToRefs(navigationStore)
+const route = useRoute()
+
 const pageList = [
   { id: 'pagelist0', to: '/', name: 'HOME' },
   { id: 'pagelist1', to: '/what-we-do', name: 'WHAT WE DO' },
   { id: 'pagelist2', to: '/our-story', name: 'OUR STORY' },
   { id: 'pagelist3', to: '/our-values', name: 'OUR VALUES' },
   { id: 'pagelist4', to: '/news', name: 'NEWS' },
-  { id: 'pagelist5', to: '/thesis', name: 'THESIS' },
-  { id: 'pagelist6', to: '/books', name: 'BOOKS' }
+  { id: 'pagelist5', to: '/thesis', name: 'LEARN' }
 ]
 
 const bbboxitem = ref([
   {
     id: 'bbbox_item0',
     name: 'Policy Analysis',
-    to: '/policy-analysis'
+    to: '/policy-analysis',
+    parent: 1
   },
   {
     id: 'bbbox_item1',
     name: 'Policy Advisory',
-    to: '/policy-advisory'
+    to: '/policy-advisory',
+    parent: 1
   },
   {
     id: 'bbbox_item2',
     name: 'Communications Strategy',
-    to: '/communications-strategy'
+    to: '/communications-strategy',
+    parent: 1
   }
 ])
-const navigationStore = useNavigationStore()
-const { pageItemWidth, distanceToLeft } = storeToRefs(navigationStore)
+const bbboxitem1 = ref([
+  { id: 'pagelist0', to: '/what-we-do', name: 'WHAT WE DO', parent: 1 },
+  {
+    id: 'bbbox_item1',
+    name: 'Policy Analysis',
+    to: '/policy-analysis',
+    parent: 1
+  },
+  {
+    id: 'bbbox_item2',
+    name: 'Policy Advisory',
+    to: '/policy-advisory',
+    parent: 1
+  },
+  {
+    id: 'bbbox_item3',
+    name: 'Communications Strategy',
+    to: '/communications-strategy',
+    parent: 1
+  }
+])
 
-const goUrl = (to: string) => {
-  let pageIndexValue = pageList.findIndex(item => item.to === to)
-  if (pageIndexValue !== -1) {
-    const element = document.getElementById(pageList[pageIndexValue].id)
-    if (element) {
-      const rect = element.getBoundingClientRect()
-      const parentRect = (
-        document.getElementById('link_list435') as any
-      ).getBoundingClientRect()
-      navigationStore.updateNavigationState(
-        rect.width,
-        rect.left - parentRect.left
-      )
-    }
+const learnItem = ref([
+  { id: 'learn_item0', name: 'THESIS', to: '/thesis', parent: 5 },
+  { id: 'learn_item1', name: 'BOOKS', to: '/books', parent: 5 }
+])
+
+const setActivePageFromRoute = (route: any) => {
+  navigationStore.setActivePageByPath(route.path)
+}
+
+onMounted(() => {
+  setActivePageFromRoute(route)
+})
+
+watch(route, () => {
+  setActivePageFromRoute(route)
+})
+
+const clickPage = (index: number, parentIndex?: number) => {
+  if (parentIndex !== undefined) {
+    navigationStore.setActivePage(parentIndex)
+  } else {
+    navigationStore.setActivePage(index)
+  }
+}
+
+const bbboxClickBoo = ref(false)
+const bbboxClickBoo1 = ref(false)
+const bbboxLeft = ref(0)
+const bbbox1Left = ref(0)
+
+const bbboxEnter = (id: string) => {
+  if (id === 'pagelist1') {
+    bbboxClickBoo.value = true
+  }
+  if (id === 'pagelist5') {
+    bbboxClickBoo1.value = true
+  }
+}
+
+const bbboxmMouseleave = () => {
+  bbboxClickBoo.value = false
+  bbboxClickBoo1.value = false
+}
+
+const width = ref(window.innerWidth)
+window.onresize = () => {
+  width.value = window.innerWidth
+}
+
+const updatedWidth = function () {
+  width.value = window.innerWidth
+  updateBoxPosition()
+}
+
+const updateBoxPosition = () => {
+  const whatWeDoElement = document.getElementById(pageList[1].id)
+  const learnElement = document.getElementById(pageList[5].id)
+
+  if (whatWeDoElement) {
+    const whatWeDoRect = whatWeDoElement.getBoundingClientRect()
+    const parentRect = (
+      document.getElementById('link_list435') as any
+    ).getBoundingClientRect()
+    bbboxLeft.value = whatWeDoRect.left - parentRect.left - 25
+  }
+
+  if (learnElement) {
+    const learnRect = learnElement.getBoundingClientRect()
+    const parentRect = (
+      document.getElementById('link_list435') as any
+    ).getBoundingClientRect()
+    bbbox1Left.value = learnRect.left - parentRect.left - 50
   }
 }
 
 onMounted(() => {
   window.addEventListener('resize', updatedWidth)
-
-  const path = window.location.pathname
-  goUrl(path)
-  toggleBox()
+  updateBoxPosition()
 })
+
 onUnmounted(() => {
   window.removeEventListener('resize', updatedWidth)
 })
-
-onBeforeRouteUpdate(to => {
-  goUrl(to.path)
-})
-
-const clickPage = (index: number) => {
-  bbboxClickBoo.value = false
-
-  const element = document.getElementById(pageList[index].id)
-  if (element) {
-    const rect = element.getBoundingClientRect()
-    const parentRect = (
-      document.getElementById('link_list435') as any
-    ).getBoundingClientRect()
-    navigationStore.updateNavigationState(
-      rect.width,
-      rect.left - parentRect.left
-    )
-  }
-}
-const bbboxClickBoo = ref(false)
-const bbboxEnter = (id: string) => {
-  if (id === 'pagelist1') {
-    bbboxClickBoo.value = true
-  }
-}
-const pageItemWidth1 = ref(0)
-const toggleBox = async () => {
-  const element = document.getElementById(pageList[1].id)
-  if (element) {
-    const rect = element.getBoundingClientRect()
-    const parentRect = (
-      document.getElementById('link_list435') as any
-    ).getBoundingClientRect()
-    navigationStore.updateNavigationState(
-      rect.width,
-      rect.left - parentRect.left
-    )
-
-    pageItemWidth1.value = pageItemWidth.value
-  }
-}
-
-const width = ref(window.innerWidth)
-window.onresize = () => {
-  // 监听窗口大小变化
-  width.value = window.innerWidth
-}
-const updatedWidth = function () {
-  width.value = window.innerWidth
-}
 
 const selectType = ref(false)
 const blockSelect = () => {
@@ -121,12 +149,6 @@ const blockSelect = () => {
   document.addEventListener('wheel', event => {
     event.preventDefault()
   })
-  // // 禁止滚动
-  // if (document.body.style.overflow != 'hidden') {
-  //   document.body.style.overflow = 'hidden'
-  // } else {
-  //   document.body.style.overflow = 'auto'
-  // }
 }
 </script>
 
@@ -146,8 +168,6 @@ const blockSelect = () => {
       >
         <img v-if="width > 840" src="@/assets/svgs/Logo.svg" alt="" />
         <img v-else src="@/assets/svgs/Logo_P.svg" alt="" />
-        <!-- <div class="logo">Geopolobserver</div> -->
-        <!-- <div class="logo">GEOPOLOBSERVER</div> -->
       </router-link>
 
       <div class="right" v-if="width > 1240">
@@ -157,40 +177,69 @@ const blockSelect = () => {
             @click="clickPage(index)"
             :key="index"
             @mouseenter="bbboxEnter(item.id)"
-            @mouseleave="bbboxClickBoo = false"
+            @mouseleave="bbboxmMouseleave"
+            :id="item.id"
           >
-            <router-link class="pageTitle" :id="item.id" :to="item.to">
-              <div class="pageItem" ref="isBoxV">
+            <router-link class="pageTitle" :to="item.to">
+              <div
+                class="pageItem"
+                :style="{ color: activePage === index ? '#6832c5' : '#1b1b1b' }"
+              >
                 {{ item.name }}
                 <img
-                  v-if="item.id == 'pagelist1'"
+                  v-if="item.id === 'pagelist1' || item.id === 'pagelist5'"
                   src="@/assets/svgs/DownArrow.svg"
                   alt=""
                 />
               </div>
             </router-link>
           </div>
-          <i
-            class="btnling"
-            :style="{
-              left: `${distanceToLeft + pageItemWidth / 2 - 8}px`
-            }"
-          ></i>
+
           <div
             @mouseenter="bbboxClickBoo = true"
             @mouseleave="bbboxClickBoo = false"
             class="bbbox"
             :class="bbboxClickBoo ? 'bbbox_item_hover' : ''"
-            :style="{
-              left: `${pageItemWidth1 - pageItemWidth1 / 3}px`
-            }"
+            :style="{ left: `${bbboxLeft}px` }"
           >
             <div
               v-for="(item, index) in bbboxitem"
               :key="index"
               class="border_bbbox"
+              @click="clickPage(index, item.parent)"
             >
-              <router-link class="bbbox_item" :to="item.to">
+              <router-link
+                class="bbbox_item"
+                :to="item.to"
+                :style="{
+                  color: route.path === item.to ? '#6832c5' : '#1b1b1b'
+                }"
+              >
+                {{ item.name }}
+              </router-link>
+            </div>
+          </div>
+
+          <div
+            @mouseenter="bbboxClickBoo1 = true"
+            @mouseleave="bbboxClickBoo1 = false"
+            class="bbbox bbbox_1"
+            :class="bbboxClickBoo1 ? 'bbbox_item_hover' : ''"
+            :style="{ left: `${bbbox1Left}px` }"
+          >
+            <div
+              v-for="(item, index) in learnItem"
+              :key="index"
+              class="border_bbbox"
+              @click="clickPage(index, item.parent)"
+            >
+              <router-link
+                class="bbbox_item"
+                :to="item.to"
+                :style="{
+                  color: route.path === item.to ? '#6832c5' : '#1b1b1b'
+                }"
+              >
                 {{ item.name }}
               </router-link>
             </div>
@@ -214,27 +263,48 @@ const blockSelect = () => {
           :key="index"
         >
           <router-link
-            v-if="index !== 1"
+            v-if="index !== 1 && index !== 5"
             @click="selectType = false"
             class="drawerpageTitle"
             :to="item.to"
+            :style="{ color: activePage === index ? '#6832c5' : '#1b1b1b' }"
           >
             {{ item.name }}
           </router-link>
           <el-collapse v-if="index == 1" class="collapse">
             <el-collapse-item title="WHAT WE DO">
-              <router-link
+              <!-- <router-link
                 class="collapse_item"
                 :to="item.to"
                 @click="selectType = false"
+                :style="{ color: activePage === index ? '#6832c5' : '#1b1b1b' }"
               >
                 What We Do
-              </router-link>
-              <div v-for="(item, index) in bbboxitem" :key="index">
+              </router-link> -->
+              <div v-for="(item, index) in bbboxitem1" :key="index">
                 <router-link
                   class="collapse_item"
                   :to="item.to"
                   @click="selectType = false"
+                  :style="{
+                    color: route.path === item.to ? '#6832c5' : '#1b1b1b'
+                  }"
+                >
+                  {{ item.name }}
+                </router-link>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+          <el-collapse v-if="index == 5" class="collapse">
+            <el-collapse-item title="LEARN">
+              <div v-for="(item, index) in learnItem" :key="index">
+                <router-link
+                  class="collapse_item"
+                  :to="item.to"
+                  @click="selectType = false"
+                  :style="{
+                    color: route.path === item.to ? '#6832c5' : '#1b1b1b'
+                  }"
                 >
                   {{ item.name }}
                 </router-link>
@@ -248,6 +318,13 @@ const blockSelect = () => {
 </template>
 
 <style scoped lang="less">
+.pageTitle {
+  color: #6832c5; // 设置紫色
+}
+.Logo_a {
+  width: 400px;
+  margin-top: 76px !important;
+}
 .ContactUs {
   width: 100%;
   font-family: Marsek;
@@ -345,6 +422,12 @@ const blockSelect = () => {
 
   z-index: -100;
 }
+.bbbox_1 {
+  .border_bbbox:nth-child(2) {
+    border-bottom: none !important;
+    border-top: 1px dashed #5416b852;
+  }
+}
 .bbbox_item_hover {
   z-index: 100;
   transform: translateY(0px);
@@ -407,17 +490,17 @@ const blockSelect = () => {
 }
 .top_button {
   cursor: pointer;
-  width: 196px;
-  height: 55px;
+  width: 170px;
+  height: 50px;
   flex-shrink: 0;
-  border-radius: 54px;
+  border-radius: 40px;
   background: #6832c5;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 19px;
   font-style: normal;
   font-weight: 500;
   line-height: 94.255%;
@@ -434,7 +517,7 @@ const blockSelect = () => {
   margin-left: 20px;
 }
 
-@media (max-width: 1681px) {
+@media (max-width: 1734px) {
   .app-topnav {
     padding: 0 0px;
     .container {
@@ -448,7 +531,7 @@ const blockSelect = () => {
     gap: 30px !important;
   }
 }
-@media (max-width: 1430px) {
+@media (max-width: 1446px) {
   .app-topnav {
     padding: 0 0px;
     .container {
@@ -479,10 +562,28 @@ const blockSelect = () => {
     }
   }
   .link_list {
-    gap: 30px !important;
+    gap: 25px !important;
+  }
+  .pageTitle {
+    font-size: 16px !important;
+  }
+  .pageItem {
+    img {
+      width: 16px;
+    }
+  }
+  .top_button {
+    width: 166px;
+    height: 36px;
+    font-weight: 400;
+    font-size: 18px;
+  }
+  .Logo_a {
+    width: 300px;
+    margin-top: 90px !important;
   }
   .right {
-    gap: 40px !important;
+    gap: 20px !important;
   }
 }
 @media (max-width: 1340px) {

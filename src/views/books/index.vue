@@ -3,73 +3,282 @@ import { List, News } from '@/api/news'
 import router from '@/router'
 import { ElMessage } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue'
-const data = reactive({
-  country: 'us',
-  apiKey: 'c841f41ff46747aea7040e0b6cf14ebe',
-  pageSize: 100,
-  page: 1
-})
-const news = ref()
-const GetNews = async () => {
-  const res = await List()
-  if (res.data.code == 0) {
-    news.value = res.data.data.articles
-  } else {
-    ElMessage.error('Failed to get news')
-  }
-}
-const RouterDetail = (id: string) => {
-  router.push({
-    path: '/news/detail',
-    query: {
-      id
-    }
-  })
-}
-const loading = ref(false)
-onMounted(async () => {
-  loading.value = true
-  GetNews()
-  loading.value = false
-})
 </script>
 <template>
-  <div v-loading.fullscreen.lock="loading" v-if="news" class="home_view">
+  <div class="home_view">
     <div>
       <div class="child_top">
         <div class="bg">
-          <div class="child_top_title">Current News</div>
+          <div class="child_top_title">Geopolitical Books</div>
         </div>
       </div>
       <div class="container">
-        <div class="news" v-for="(item, index) in news" :key="index">
-          <div class="news_title">
-            {{ item.webTitle }}
-          </div>
-          <div class="assemble">
-            <!-- <div class="news_author" v-if="item.author">
-              author : {{ item.author }}
+        <a
+          href="https://www.centromachiavelli.com/en/2024/03/22/wokeism-cancel-culture-oikophobia/"
+          style="text-decoration: none"
+        >
+          <div class="news">
+            <div class="book_left" style="width: 100px; height: 150px">
+              <img src="@/assets/images/b1.jpg" alt="" />
             </div>
-            <span v-if="item.author">|</span> -->
-            <div class="news_webPublicationDate">
-              {{ item.webPublicationDate }}
+            <div class="book_right">
+              <div style="display: flex; flex-direction: column; gap: 30px">
+                <div
+                  style="
+                    color: #000033;
+                    font-family: Montserrat;
+                    font-weight: 500;
+                    font-size: 14px;
+                  "
+                >
+                  BOOK&nbsp;
+                </div>
+
+                <div>
+                  <div class="book_title">
+                    <div
+                      style="
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      Wokeism, cancel culture, oikophobia. Three threats to our
+                      civilization
+                    </div>
+                  </div>
+                  <div class="time">
+                    <em>
+                      <span style="color: #0093d0"
+                        >a cura di Emanuele Mastrangelo&nbsp;&nbsp;</span
+                      >
+                    </em>
+                    <span
+                      style="
+                        font-family: Work Sans;
+                        font-weight: 500;
+                        color: #4a4e57;
+                      "
+                      >febbraio 2024&nbsp;</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <span style="color: #000033; font-size: 16px"
+                  >TOPICS:&nbsp;</span
+                ><span style="color: #4a4e57; font-size: 16px" class="xhx"
+                  >Woke, cancel culture, guerra culturale
+                </span>
+              </div>
             </div>
           </div>
-          <div class="news_description">
-            {{ item.trailText }}
-          </div>
-          <!-- <div class="news_content" v-html="item.content"></div> -->
-          <div class="news_url">
-            <div class="news_url" @click="RouterDetail(item.id)">
-              Read the original
+        </a>
+        <a
+          href="https://www.centromachiavelli.com/en/2022/05/31/attualita-del-sovranismo-daniele-scalea/"
+          style="text-decoration: none"
+        >
+          <div class="news">
+            <div class="book_left" style="width: 100px; height: 150px">
+              <img src="@/assets/images/b2.jpg" alt="" />
+            </div>
+            <div class="book_right">
+              <div style="display: flex; flex-direction: column; gap: 30px">
+                <div
+                  style="
+                    color: #000033;
+                    font-family: Montserrat;
+                    font-weight: 500;
+                    font-size: 14px;
+                  "
+                >
+                  BOOK&nbsp;
+                </div>
+
+                <div>
+                  <div class="book_title">
+                    <div
+                      style="
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      Topicality of sovereignism. Between pandemic and war
+                    </div>
+                  </div>
+                  <div class="time">
+                    <em>
+                      <span style="color: #0093d0"
+                        >edited by Daniele Scalea&nbsp;&nbsp;</span
+                      >
+                    </em>
+                    <span
+                      style="
+                        font-family: Work Sans;
+                        font-weight: 500;
+                        color: #4a4e57;
+                      "
+                      >May 2022</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <span style="color: #000033; font-size: 16px"
+                  >TOPICS:&nbsp;</span
+                ><span style="color: #4a4e57; font-size: 16px" class="xhx"
+                  >Sovereigntism, Right, Political Philosophy
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
+        <a
+          href="https://www.centromachiavelli.com/en/2020/09/19/trump-contro-tutti-graziosi-scalea-capezzone-giorgetti-usa-2020-elezioni-libri/"
+          style="text-decoration: none"
+        >
+          <div class="news">
+            <div class="book_left" style="width: 100px; height: 150px">
+              <img src="@/assets/images/b3.jpg" alt="" />
+            </div>
+            <div class="book_right">
+              <div style="display: flex; flex-direction: column; gap: 30px">
+                <div
+                  style="
+                    color: #000033;
+                    font-family: Montserrat;
+                    font-weight: 500;
+                    font-size: 14px;
+                  "
+                >
+                  BOOK&nbsp;
+                </div>
+
+                <div>
+                  <div class="book_title">
+                    <div
+                      style="
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      Trump vs. everyone. America (and the West) at the
+                      crossroads
+                    </div>
+                  </div>
+                  <div class="time">
+                    <em>
+                      <span style="color: #0093d0"
+                        >Stefano Graziosi and Daniele Scalea&nbsp;&nbsp;</span
+                      >
+                    </em>
+                    <span
+                      style="
+                        font-family: Work Sans;
+                        font-weight: 500;
+                        color: #4a4e57;
+                      "
+                      >Sept. 2020&nbsp;</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <span style="color: #000033; font-size: 16px"
+                  >TOPICS:&nbsp;</span
+                ><span style="color: #4a4e57; font-size: 16px" class="xhx"
+                  >USA, Political philosophy, International politics
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="https://www.centromachiavelli.com/en/2019/03/05/immigrazione-le-ragioni-dei-populisti/"
+          style="text-decoration: none"
+        >
+          <div class="news">
+            <div class="book_left" style="width: 100px; height: 150px">
+              <img src="@/assets/images/b4.jpg" alt="" />
+            </div>
+            <div class="book_right">
+              <div style="display: flex; flex-direction: column; gap: 30px">
+                <div
+                  style="
+                    color: #000033;
+                    font-family: Montserrat;
+                    font-weight: 500;
+                    font-size: 14px;
+                  "
+                >
+                  BOOK&nbsp;
+                </div>
+
+                <div>
+                  <div class="book_title">
+                    <div
+                      style="
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      Immigration: the reasons of the populists
+                    </div>
+                  </div>
+                  <div class="time">
+                    <em>
+                      <span style="color: #0093d0"
+                        >Daniele Scalea&nbsp;&nbsp;</span
+                      >
+                    </em>
+                    <span
+                      style="
+                        font-family: Work Sans;
+                        font-weight: 500;
+                        color: #4a4e57;
+                      "
+                      >March 2019&nbsp;</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex">
+                <span style="color: #000033; font-size: 16px"
+                  >TOPICS:&nbsp;</span
+                ><span style="color: #4a4e57; font-size: 16px" class="xhx">
+                  Immigration, Demography, Economy, Security, Political
+                  philosophy
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 </template>
 <style scoped lang="less">
+.xhx {
+  text-decoration: underline;
+  color: #000033;
+  font-size: 16px;
+}
+a {
+  //下划线
+  text-decoration: underline;
+  color: #000033;
+  font-size: 16px;
+}
+.book_left {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
 .home_view {
   background: #f1f7f4;
   .child_top {
@@ -80,8 +289,7 @@ onMounted(async () => {
     .bg {
       max-width: 1720px;
       width: 100%;
-      background: url('@/assets/images/2941722852588_.pic.jpg') no-repeat center
-        center;
+      background: url('@/assets/images/book.jpg') no-repeat center center;
       background-size: cover;
       height: 700px;
       display: flex;
@@ -115,47 +323,29 @@ onMounted(async () => {
     }
   }
   .container {
-    font-family: 'Source Serif Pro', Sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 151%;
-    color: #69727d;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-
+    gap: 40px;
     padding: 0 44px;
     margin-top: 50px;
     padding-bottom: 50px;
     .news {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      gap: 20px;
+      &:hover {
+        // background: #000;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+        //过渡
+
+        transition: all 0.3s ease-in-out;
+      }
+      transition: all 0.3s ease-in-out;
+      padding: 15px;
     }
-    .news_content {
-      color: #181818;
-    }
-    .news_title {
-      color: #6832c5;
-      color: rgba(0, 0, 0);
-      font-family: Marsek;
-      font-size: 27px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 149.303%; /* 59.721px */
-    }
-    .assemble {
+    .book_right {
       display: flex;
-      gap: 10px;
-      font-size: 17px;
-      color: #00a1df;
-    }
-    .news_url {
-      margin-top: 5px;
-      font-size: 18px;
-      text-decoration: underline; // 去掉下划线
-      color: #6832c5;
-      //鼠标变小手
+      flex-direction: column;
+      gap: 30px;
       cursor: pointer;
     }
   }
@@ -178,18 +368,6 @@ onMounted(async () => {
       .news {
         display: flex;
         gap: 8px;
-      }
-      .news_title {
-        font-size: 22px;
-        line-height: 121%;
-      }
-      .assemble {
-        gap: 0px;
-        font-size: 12px;
-      }
-      .news_url {
-        margin-top: 2px;
-        font-size: 14px;
       }
     }
   }

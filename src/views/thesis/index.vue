@@ -1,68 +1,49 @@
 <script setup lang="ts" name="HomeView">
-import { List, News } from '@/api/news'
+import { ThesisApi } from '@/api/thesis'
 import router from '@/router'
 import { ElMessage } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue'
-const data = reactive({
-  country: 'us',
-  apiKey: 'c841f41ff46747aea7040e0b6cf14ebe',
-  pageSize: 100,
-  page: 1
-})
-const news = ref()
-const GetNews = async () => {
-  const res = await List()
+
+const ThesisData = ref()
+const GetThesis = async () => {
+  const res = await ThesisApi()
+
   if (res.data.code == 0) {
-    news.value = res.data.data.articles
+    ThesisData.value = res.data.data.paper_list
+    console.log('re s', res.data)
   } else {
-    ElMessage.error('Failed to get news')
+    ElMessage.error('Failed to get thesis')
   }
-}
-const RouterDetail = (id: string) => {
-  router.push({
-    path: '/news/detail',
-    query: {
-      id
-    }
-  })
 }
 const loading = ref(false)
 onMounted(async () => {
   loading.value = true
-  GetNews()
+  GetThesis()
   loading.value = false
 })
 </script>
 <template>
-  <div v-loading.fullscreen.lock="loading" v-if="news" class="home_view">
+  <div v-loading.fullscreen.lock="loading" v-if="ThesisData" class="home_view">
     <div>
       <div class="child_top">
         <div class="bg">
-          <div class="child_top_title">Current News</div>
+          <div class="child_top_title">Academic Paper</div>
         </div>
       </div>
       <div class="container">
-        <div class="news" v-for="(item, index) in news" :key="index">
-          <div class="news_title">
-            {{ item.webTitle }}
+        <div class="thesis" v-for="(item, index) in ThesisData" :key="index">
+          <div class="thesis_title">
+            {{ item.title }}
           </div>
-          <div class="assemble">
-            <!-- <div class="news_author" v-if="item.author">
-              author : {{ item.author }}
-            </div>
-            <span v-if="item.author">|</span> -->
-            <div class="news_webPublicationDate">
-              {{ item.webPublicationDate }}
-            </div>
+          <div class="author">
+            {{ item.author }}
           </div>
-          <div class="news_description">
-            {{ item.trailText }}
+          <div class="thesis_description">
+            {{ item.desc }}
           </div>
-          <!-- <div class="news_content" v-html="item.content"></div> -->
-          <div class="news_url">
-            <div class="news_url" @click="RouterDetail(item.id)">
-              Read the original
-            </div>
+
+          <div class="thesis_url">
+            <a :href="item.url">Read the original</a>
           </div>
         </div>
       </div>
@@ -80,8 +61,8 @@ onMounted(async () => {
     .bg {
       max-width: 1720px;
       width: 100%;
-      background: url('@/assets/images/2941722852588_.pic.jpg') no-repeat center
-        center;
+      background: url('@/assets/images/6441723024982_.pic_hd.jpg') no-repeat
+        center center;
       background-size: cover;
       height: 700px;
       display: flex;
@@ -127,15 +108,13 @@ onMounted(async () => {
     padding: 0 44px;
     margin-top: 50px;
     padding-bottom: 50px;
-    .news {
+    .thesis {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
-    .news_content {
-      color: #181818;
-    }
-    .news_title {
+
+    .thesis_title {
       color: #6832c5;
       color: rgba(0, 0, 0);
       font-family: Marsek;
@@ -144,18 +123,20 @@ onMounted(async () => {
       font-weight: 400;
       line-height: 149.303%; /* 59.721px */
     }
-    .assemble {
+    .author {
       display: flex;
       gap: 10px;
       font-size: 17px;
       color: #00a1df;
     }
-    .news_url {
-      margin-top: 5px;
+    .thesis_url {
+      margin-top: 10px;
       font-size: 18px;
-      text-decoration: underline; // 去掉下划线
-      color: #6832c5;
-      //鼠标变小手
+      a {
+        text-decoration: underline !important; // 下划线
+        color: #6832c5;
+        //鼠标变小手
+      }
       cursor: pointer;
     }
   }
@@ -175,19 +156,19 @@ onMounted(async () => {
       font-size: 16px;
       line-height: 121%;
       gap: 18px;
-      .news {
+      .thesis {
         display: flex;
         gap: 8px;
       }
-      .news_title {
+      .thesis_title {
         font-size: 22px;
         line-height: 121%;
       }
-      .assemble {
+      .author {
         gap: 0px;
         font-size: 12px;
       }
-      .news_url {
+      .thesis_url {
         margin-top: 2px;
         font-size: 14px;
       }
