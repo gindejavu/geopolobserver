@@ -1,7 +1,46 @@
 <script setup lang="ts" name="HomeView">
+import { ref } from 'vue'
+
 const handleClick = (url: string) => {
   window.open(url, '_blank')
 }
+
+const data = ref([
+  {
+    link: 'https://www.amazon.it/Geopolitics-Short-Introduction-Klaus-Dodds/dp/0198830769/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dib=eyJ2IjoiMSJ9.o8FHCiXwu-H-bEn2ooAe6rCwkchD5-KMG2rqwcJv2ecjmvd7hD9wgIePWqcTSm65jUbv7ZCprsd9qfCrOQXRWLRB24spiFskC58H7yHxKPsebiUqK3dt6DjBtc57sfgK-aawrDcNd83js0ABCsHEVztz8tbO9rApze-AXlbSOH-_U_xFnDPRIYOTu8GEATNn0LOHTxa6d1YiBsdEgoQh49hfJo2lKXTobfd2t1lEKq0.FKrQlsiVSgirCXRoLfAo47pWUXKF92-cfk59mgy3vr8&dib_tag=se&keywords=geopolitics&qid=1723194436&s=books&sr=1-1',
+    imgUrl: 'https://m.media-amazon.com/images/I/71ed5o3UFGL._SY466_.jpg',
+    title: 'Geopolitics: A Very Short Introduction: A Very Short Introducton',
+    author: 'Klaus Dodds',
+    time: 'July 25, 2019',
+    topics: ['Geopolitics', 'International politics']
+  },
+  {
+    link: 'https://www.amazon.it/Return-Great-Powers-Russia-China/dp/0593474139/ref=sr_1_3?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dib=eyJ2IjoiMSJ9.o8FHCiXwu-H-bEn2ooAe6rCwkchD5-KMG2rqwcJv2ecjmvd7hD9wgIePWqcTSm65jUbv7ZCprsd9qfCrOQXRWLRB24spiFskC58H7yHxKPsebiUqK3dt6DjBtc57sfgK-aawrDcNd83js0ABCsHEVztz8tbO9rApze-AXlbSOH-_U_xFnDPRIYOTu8GEATNn0LOHTxa6d1YiBsdEgoQh49hfJo2lKXTobfd2t1lEKq0.FKrQlsiVSgirCXRoLfAo47pWUXKF92-cfk59mgy3vr8&dib_tag=se&keywords=geopolitics&qid=1723195289&s=books&sr=1-3',
+    imgUrl: 'https://m.media-amazon.com/images/I/716uGntAb4L._SY466_.jpg',
+    title: 'The Return of Great Powers: Russia, China, and the Next World War',
+    author: 'Jim Sciutto',
+    time: '12 marzo 2024',
+    topics: ['Geopolitics']
+  },
+  {
+    link: 'https://www.amazon.it/Geopolitica-digitale-competizione-globale-controllo/dp/8829023795/ref=sr_1_4?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dib=eyJ2IjoiMSJ9.o8FHCiXwu-H-bEn2ooAe6rCwkchD5-KMG2rqwcJv2ecjmvd7hD9wgIePWqcTSm65jUbv7ZCprsd9qfCrOQXRWLRB24spiFskC58H7yHxKPsebiUqK3dt6DjBtc57sfgK-aawrDcNd83js0ABCsHEVztz8tbO9rApze-AXlbSOH-_U_xFnDPRIYOTu8GEATNn0LOHTxa6d1YiBsdEgoQh49hfJo2lKXTobfd2t1lEKq0.FKrQlsiVSgirCXRoLfAo47pWUXKF92-cfk59mgy3vr8&dib_tag=se&keywords=geopolitics&qid=1723195289&s=books&sr=1-4',
+    imgUrl: 'https://m.media-amazon.com/images/I/71L-eu82oiL._SY466_.jpg',
+    title:
+      'Geopolitica digitale. La competizione globale per il controllo della Rete ',
+    author: 'Antonio Deruda',
+    time: '22 marzo 2024',
+    topics: ['Geopolitics', 'International politics']
+  },
+  {
+    link: 'https://www.amazon.it/Geopolitics-Emotion-Cultures-Humiliation-Reshaping/dp/1847924239/ref=sr_1_5?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dib=eyJ2IjoiMSJ9.o8FHCiXwu-H-bEn2ooAe6rCwkchD5-KMG2rqwcJv2ecjmvd7hD9wgIePWqcTSm65jUbv7ZCprsd9qfCrOQXRWLRB24spiFskC58H7yHxKPsebiUqK3dt6DjBtc57sfgK-aawrDcNd83js0ABCsHEVztz8tbO9rApze-AXlbSOH-_U_xFnDPRIYOTu8GEATNn0LOHTxa6d1YiBsdEgoQh49hfJo2lKXTobfd2t1lEKq0.FKrQlsiVSgirCXRoLfAo47pWUXKF92-cfk59mgy3vr8&dib_tag=se&keywords=geopolitics&qid=1723195289&s=books&sr=1-5',
+    imgUrl: 'https://m.media-amazon.com/images/I/91FfclMyNkL._SY466_.jpg',
+    title:
+      'The Geopolitics of Emotion: How Cultures of Fear, Humiliation and Hope are Reshaping the World',
+    author: 'Dominique Moisi',
+    time: '4 luglio 2016',
+    topics: ['Geopolitics']
+  }
+])
 </script>
 <template>
   <div class="home_view">
@@ -14,14 +53,12 @@ const handleClick = (url: string) => {
       <div class="container">
         <div
           class="news"
-          @click="
-            handleClick(
-              'https://www.amazon.it/Wokeismo-culture-oicofobia-minacce-civilt%C3%A0/dp/8833374815/ref=sr_1_4?sr=8-4'
-            )
-          "
+          v-for="item in data"
+          :key="item.link"
+          @click="handleClick(item.link)"
         >
-          <div class="book_left" style="width: 100px; height: 150px">
-            <img src="@/assets/images/b1.jpg" alt="" />
+          <div class="book_left" style="width: 100px">
+            <img :src="item.imgUrl" alt="" />
           </div>
           <div class="book_right">
             <div style="display: flex; flex-direction: column; gap: 30px">
@@ -45,14 +82,13 @@ const handleClick = (url: string) => {
                       margin-bottom: 10px;
                     "
                   >
-                    Wokeism, cancel culture, oikophobia. Three threats to our
-                    civilization
+                    {{ item.title }}
                   </div>
                 </div>
                 <div class="time">
                   <em>
                     <span style="color: #0093d0"
-                      >a cura di Emanuele Mastrangelo&nbsp;&nbsp;</span
+                      >{{ item.author }}&nbsp;&nbsp;</span
                     >
                   </em>
                   <span
@@ -61,7 +97,7 @@ const handleClick = (url: string) => {
                       font-weight: 500;
                       color: #4a4e57;
                     "
-                    >febbraio 2024&nbsp;</span
+                    >{{ item.time }}&nbsp;</span
                   >
                 </div>
               </div>
@@ -69,193 +105,13 @@ const handleClick = (url: string) => {
 
             <div>
               <span style="color: #000033; font-size: 16px">TOPICS:&nbsp;</span
-              ><span style="color: #4a4e57; font-size: 16px" class="xhx"
-                >Woke, cancel culture, guerra culturale
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="news"
-          @click="
-            handleClick(
-              'https://www.amazon.it/Lattualit%C3%A0-del-sovranismo-pandemia-guerra/dp/8833373606/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=28GEYYR09UKGA&keywords=l%27attualit%C3%A0+del+sovranismo&qid=1653571419&s=books&sprefix=l+attualit%C3%A0+del+sovranismo%2Cstripbooks%2C124&sr=1-1'
-            )
-          "
-        >
-          <div class="book_left" style="width: 100px; height: 150px">
-            <img src="@/assets/images/b2.jpg" alt="" />
-          </div>
-          <div class="book_right">
-            <div style="display: flex; flex-direction: column; gap: 30px">
-              <div
-                style="
-                  color: #000033;
-                  font-family: Montserrat;
-                  font-weight: 500;
-                  font-size: 14px;
-                "
+              ><span
+                style="color: #4a4e57; font-size: 16px"
+                class="xhx"
+                v-for="topic in item.topics"
+                :key="topic"
               >
-                BOOK&nbsp;
-              </div>
-
-              <div>
-                <div class="book_title">
-                  <div
-                    style="
-                      font-size: 20px;
-                      font-weight: 500;
-                      margin-bottom: 10px;
-                    "
-                  >
-                    Topicality of sovereignism. Between pandemic and war
-                  </div>
-                </div>
-                <div class="time">
-                  <em>
-                    <span style="color: #0093d0"
-                      >edited by Daniele Scalea&nbsp;&nbsp;</span
-                    >
-                  </em>
-                  <span
-                    style="
-                      font-family: Work Sans;
-                      font-weight: 500;
-                      color: #4a4e57;
-                    "
-                    >May 2022</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <span style="color: #000033; font-size: 16px">TOPICS:&nbsp;</span
-              ><span style="color: #4a4e57; font-size: 16px" class="xhx"
-                >Sovereigntism, Right, Political Philosophy
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="news"
-          @click="
-            handleClick(
-              'https://www.amazon.it/Trump-contro-tutti-LAmerica-lOccidente/dp/8833371867'
-            )
-          "
-        >
-          <div class="book_left" style="width: 100px; height: 150px">
-            <img src="@/assets/images/b3.jpg" alt="" />
-          </div>
-          <div class="book_right">
-            <div style="display: flex; flex-direction: column; gap: 30px">
-              <div
-                style="
-                  color: #000033;
-                  font-family: Montserrat;
-                  font-weight: 500;
-                  font-size: 14px;
-                "
-              >
-                BOOK&nbsp;
-              </div>
-
-              <div>
-                <div class="book_title">
-                  <div
-                    style="
-                      font-size: 20px;
-                      font-weight: 500;
-                      margin-bottom: 10px;
-                    "
-                  >
-                    Trump vs. everyone. America (and the West) at the crossroads
-                  </div>
-                </div>
-                <div class="time">
-                  <em>
-                    <span style="color: #0093d0"
-                      >Stefano Graziosi and Daniele Scalea&nbsp;&nbsp;</span
-                    >
-                  </em>
-                  <span
-                    style="
-                      font-family: Work Sans;
-                      font-weight: 500;
-                      color: #4a4e57;
-                    "
-                    >Sept. 2020&nbsp;</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <span style="color: #000033; font-size: 16px">TOPICS:&nbsp;</span
-              ><span style="color: #4a4e57; font-size: 16px" class="xhx"
-                >USA, Political philosophy, International politics
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="news"
-          @click="handleClick('https://www.amazon.it/gp/product/8833371093')"
-        >
-          <div class="book_left" style="width: 100px; height: 150px">
-            <img src="@/assets/images/b4.jpg" alt="" />
-          </div>
-          <div class="book_right">
-            <div style="display: flex; flex-direction: column; gap: 30px">
-              <div
-                style="
-                  color: #000033;
-                  font-family: Montserrat;
-                  font-weight: 500;
-                  font-size: 14px;
-                "
-              >
-                BOOK&nbsp;
-              </div>
-
-              <div>
-                <div class="book_title">
-                  <div
-                    style="
-                      font-size: 20px;
-                      font-weight: 500;
-                      margin-bottom: 10px;
-                    "
-                  >
-                    Immigration: the reasons of the populists
-                  </div>
-                </div>
-                <div class="time">
-                  <em>
-                    <span style="color: #0093d0"
-                      >Daniele Scalea&nbsp;&nbsp;</span
-                    >
-                  </em>
-                  <span
-                    style="
-                      font-family: Work Sans;
-                      font-weight: 500;
-                      color: #4a4e57;
-                    "
-                    >March 2019&nbsp;</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div style="display: flex">
-              <span style="color: #000033; font-size: 16px">TOPICS:&nbsp;</span
-              ><span style="color: #4a4e57; font-size: 16px" class="xhx">
-                Immigration, Demography, Economy, Security, Political philosophy
+                {{ topic }}
               </span>
             </div>
           </div>
@@ -269,6 +125,7 @@ const handleClick = (url: string) => {
   text-decoration: underline;
   color: #000033;
   font-size: 16px;
+  margin-right: 10px;
 }
 a {
   //下划线
