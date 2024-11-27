@@ -120,7 +120,7 @@
     .bg {
       max-width: 1720px;
       width: 100%;
-      background: url('@/assets/images/CommunicationsStrategy.jpg') no-repeat
+      background: url("@/assets/images/CommunicationsStrategy.jpg") no-repeat
         top center;
       background-size: cover;
       height: 700px;
@@ -130,7 +130,7 @@
       box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.5);
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -156,7 +156,7 @@
   }
 
   .container {
-    font-family: 'Source Serif Pro', Sans-serif;
+    font-family: "Source Serif Pro", Sans-serif;
     font-size: 23px;
     font-weight: 400;
     line-height: 29px;
@@ -174,7 +174,7 @@
     }
     .WhatWeDoyArticle_text_big {
       color: #6832c5;
-      font-family: 'Source Serif Pro', Sans-serif;
+      font-family: "Source Serif Pro", Sans-serif;
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
@@ -211,7 +211,7 @@
         height: 420px;
 
         .child_top_title {
-          font-size: 40px;
+          font-size: 36px;
           margin-left: 1%;
           margin-bottom: 50px;
         }

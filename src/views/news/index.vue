@@ -1,77 +1,89 @@
 <script setup lang="ts" name="HomeView">
-import { List, News } from '@/api/news'
-import router from '@/router'
-import { ElMessage } from 'element-plus'
-import { onMounted, reactive, ref } from 'vue'
+import { List } from "@/api/news";
+import router from "@/router";
+import { ElMessage } from "element-plus";
+import { onMounted, reactive, ref } from "vue";
 const data = reactive({
-  country: 'us',
-  apiKey: 'c841f41ff46747aea7040e0b6cf14ebe',
+  country: "us",
+  apiKey: "c841f41ff46747aea7040e0b6cf14ebe",
   pageSize: 100,
-  page: 1
-})
-const news = ref()
+  page: 1,
+});
+const news = ref();
 const GetNews = async () => {
-  const res = await List()
+  const res = await List();
   if (res.data.code == 0) {
-    news.value = res.data.data.articles
+    news.value = res.data.data.articles;
   } else {
-    ElMessage.error('Failed to get news')
+    ElMessage.error("Failed to get news");
   }
-}
+};
 const RouterDetail = (id: string) => {
   router.push({
-    path: '/news/detail',
+    path: "/news/detail",
     query: {
-      id
-    }
-  })
-}
-const loading = ref(false)
+      id,
+    },
+  });
+};
+const loading = ref(false);
 onMounted(async () => {
-  loading.value = true
-  GetNews()
-  loading.value = false
-})
+  loading.value = true;
+  GetNews();
+  loading.value = false;
+});
 </script>
 <template>
-  <div v-loading.fullscreen.lock="loading" v-if="news" class="home_view">
-    <div>
-      <div class="child_top">
-        <div class="bg">
-          <div class="child_top_title">Current News</div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="news" v-for="(item, index) in news" :key="index">
-          <div class="news_title">
-            {{ item.webTitle }}
+  <div class="home_view">
+    <div v-loading.fullscreen.lock="loading">
+      <div>
+        <div class="child_top">
+          <div class="bg">
+            <div class="child_top_title">Current News</div>
           </div>
-          <div class="assemble">
-            <!-- <div class="news_author" v-if="item.author">
+        </div>
+        <div class="container" v-if="news">
+          <div class="news" v-for="(item, index) in news" :key="index">
+            <div class="news_title">
+              {{ item.webTitle }}
+            </div>
+            <div class="assemble">
+              <!-- <div class="news_author" v-if="item.author">
               author : {{ item.author }}
             </div>
             <span v-if="item.author">|</span> -->
-            <div class="news_webPublicationDate">
-              {{ item.webPublicationDate }}
+              <div class="news_webPublicationDate">
+                {{ item.webPublicationDate }}
+              </div>
             </div>
-          </div>
-          <div class="news_description">
-            {{ item.trailText }}
-          </div>
-          <!-- <div class="news_content" v-html="item.content"></div> -->
-          <div class="news_url">
-            <div class="news_url" @click="RouterDetail(item.id)">
-              Read the original
+            <div class="news_description">
+              {{ item.trailText }}
+            </div>
+            <!-- <div class="news_content" v-html="item.content"></div> -->
+            <div class="news_url">
+              <div class="news_url" @click="RouterDetail(item.id)">
+                Read the original
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="NoData" v-if="!news">暂无数据</div>
   </div>
 </template>
 <style scoped lang="less">
+.NoData {
+  font-size: 30px;
+  color: #000;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .home_view {
   background: #f1f7f4;
+  height: 100%;
   .child_top {
     background: #000;
     display: flex;
@@ -80,7 +92,7 @@ onMounted(async () => {
     .bg {
       max-width: 1720px;
       width: 100%;
-      background: url('@/assets/images/2941722852588_.pic.jpg') no-repeat center
+      background: url("@/assets/images/2941722852588_.pic.jpg") no-repeat center
         center;
       background-size: cover;
       height: 700px;
@@ -90,7 +102,7 @@ onMounted(async () => {
       box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.5);
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -115,7 +127,7 @@ onMounted(async () => {
     }
   }
   .container {
-    font-family: 'Source Serif Pro', Sans-serif;
+    font-family: "Source Serif Pro", Sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 151%;

@@ -1,40 +1,41 @@
 <script setup lang="ts" name="HomeView">
-import { ThesisApi } from '@/api/thesis'
-import router from '@/router'
-import { ElMessage } from 'element-plus'
-import { onMounted, reactive, ref } from 'vue'
+import { ThesisApi } from "@/api/thesis";
+import router from "@/router";
+import { ElMessage } from "element-plus";
+import { onMounted, reactive, ref } from "vue";
 
-const ThesisData = ref()
+const ThesisData = ref();
 const GetThesis = async () => {
-  const res = await ThesisApi()
+  console.log("2");
+  const res = await ThesisApi();
 
   if (res.data.code == 0) {
-    ThesisData.value = res.data.data.paper_list
-    console.log('re s', res.data)
+    ThesisData.value = res.data.data.paper_list;
+    console.log("re s", res.data);
   } else {
-    ElMessage.error('Failed to get thesis')
+    ElMessage.error("Failed to get thesis");
   }
-}
-const loading = ref(false)
+};
+const loading = ref(false);
 onMounted(async () => {
-  loading.value = true
-  GetThesis()
-  loading.value = false
-})
+  loading.value = true;
+  await GetThesis();
+  loading.value = false;
+});
 
 const handleClick = (url: string) => {
-  window.open(url, '_blank')
-}
+  window.open(url, "_blank");
+};
 </script>
 <template>
-  <div v-loading.fullscreen.lock="loading" v-if="ThesisData" class="home_view">
+  <div v-loading.fullscreen.lock="loading" class="home_view">
     <div>
       <div class="child_top">
         <div class="bg">
           <div class="child_top_title">Academic Paper</div>
         </div>
       </div>
-      <div class="container">
+      <div v-if="ThesisData" class="container">
         <div class="thesis" v-for="(item, index) in ThesisData" :key="index">
           <div class="thesis_title">
             {{ item.title }}
@@ -58,9 +59,18 @@ const handleClick = (url: string) => {
         </div>
       </div>
     </div>
+    <div class="NoData" v-if="!ThesisData">暂无数据</div>
   </div>
 </template>
 <style scoped lang="less">
+.NoData {
+  font-size: 30px;
+  color: #000;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .home_view {
   background: #f1f7f4;
   .child_top {
@@ -71,7 +81,7 @@ const handleClick = (url: string) => {
     .bg {
       max-width: 1720px;
       width: 100%;
-      background: url('@/assets/images/6441723024982_.pic_hd.jpg') no-repeat
+      background: url("@/assets/images/6441723024982_.pic_hd.jpg") no-repeat
         center center;
       background-size: cover;
       height: 700px;
@@ -81,7 +91,7 @@ const handleClick = (url: string) => {
       box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.5);
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -106,7 +116,7 @@ const handleClick = (url: string) => {
     }
   }
   .container {
-    font-family: 'Source Serif Pro', Sans-serif;
+    font-family: "Source Serif Pro", Sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 151%;
