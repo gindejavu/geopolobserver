@@ -59,7 +59,7 @@ const handleClick = (url: string) => {
         </div>
       </div>
     </div>
-    <div class="NoData" v-if="!ThesisData">暂无数据</div>
+    <div class="NoData" v-if="!ThesisData">No data for now</div>
   </div>
 </template>
 <style scoped lang="less">

@@ -69,7 +69,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div class="NoData" v-if="!news">暂无数据</div>
+    <div class="NoData" v-if="!news">No data for now</div>
   </div>
 </template>
 <style scoped lang="less">
