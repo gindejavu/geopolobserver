@@ -1,24 +1,24 @@
 <script setup lang="ts" name="HomeView">
-import { ref } from 'vue'
+import { ref } from "vue";
 
 const WhatWeDoyArticle_icon = ref([
   {
-    src: '/src/assets/svgs/TheEarth.svg',
-    text: 'POLICY ANALYSIS'
+    src: "/src/assets/svgs/TheEarth.svg",
+    text: "POLICY ANALYSIS",
   },
   {
-    src: '/src/assets/svgs/idea.svg',
-    text: 'POLITICAL ADVISORY'
+    src: "/src/assets/svgs/idea.svg",
+    text: "POLITICAL ADVISORY",
   },
   {
-    src: '/src/assets/svgs/Barchart.svg',
-    text: 'COMMUNICATIONS STRATEGY'
+    src: "/src/assets/svgs/Barchart.svg",
+    text: "COMMUNICATIONS STRATEGY",
   },
   {
-    src: '/src/assets/svgs/Brokenline.svg',
-    text: 'POLITICAL TECHNOLOGY'
-  }
-])
+    src: "/src/assets/svgs/Brokenline.svg",
+    text: "POLITICAL TECHNOLOGY",
+  },
+]);
 </script>
 <template>
   <div class="home_view">
@@ -88,7 +88,7 @@ const WhatWeDoyArticle_icon = ref([
   margin-top: 25px;
 
   color: #00a1df;
-  font-family: 'Aldrich', Sans-serif;
+  font-family: "Aldrich", Sans-serif;
   font-size: 20px;
   text-transform: uppercase;
 }
@@ -102,7 +102,7 @@ const WhatWeDoyArticle_icon = ref([
     .bg {
       max-width: 1720px;
       width: 100%;
-      background: url('@/assets/images/whatWeDo.jpg') no-repeat center center;
+      background: url("@/assets/images/whatWeDo.jpg") no-repeat center center;
       background-size: cover;
       height: 700px;
       display: flex;
@@ -111,7 +111,7 @@ const WhatWeDoyArticle_icon = ref([
       box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.5);
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -136,7 +136,7 @@ const WhatWeDoyArticle_icon = ref([
     }
   }
   .container {
-    font-family: 'Source Serif Pro', Sans-serif;
+    font-family: "Source Serif Pro", Sans-serif;
     font-size: 23px;
     font-weight: 400;
     line-height: 151%;
@@ -148,7 +148,7 @@ const WhatWeDoyArticle_icon = ref([
 
     .WhatWeDoyArticle_text_big {
       color: #6832c5;
-      font-family: 'Source Serif Pro', Sans-serif;
+      font-family: "Source Serif Pro", Sans-serif;
       font-size: 35px;
       font-weight: 700;
       line-height: 31px;
